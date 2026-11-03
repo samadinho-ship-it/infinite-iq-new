@@ -1,674 +1,657 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="INFINITE IQ — Ideas without limits. Technology without boundaries.">
-	<meta name="google-site-verification" content="XeVSFOrJCyVpMwf39wrUhtScmyQYgO72prQuIXXhm38" />
-	<title>INFINITE IQ | Think Beyond</title>
-
-	<style>
-		:root {
-			--bg: #070a12;
-			--surface: #101625;
-			--blue: #55aaff;
-			--cyan: #55e6ff;
-			--white: #f4f7ff;
-			--muted: #929db2;
-			--border: rgba(255,255,255,.09);
-		}
-
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-		}
-
-		html {
-			scroll-behavior: smooth;
-			scroll-padding-top: 85px;
-		}
-
-		body {
-			background: var(--bg);
-			color: var(--white);
-			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-			line-height: 1.6;
-			overflow-x: hidden;
-		}
-
-		a {
-			color: inherit;
-			text-decoration: none;
-		}
-
-		button {
-			font: inherit;
-		}
-
-		.container {
-			width: min(1120px, 90%);
-			margin: auto;
-		}
-
-		/* NAVIGATION */
-
-		header {
-			position: fixed;
-			top: 0;
-			width: 100%;
-			z-index: 100;
-			background: rgba(7,10,18,.82);
-			backdrop-filter: blur(18px);
-			border-bottom: 1px solid var(--border);
-		}
-
-		nav {
-			height: 76px;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-		}
-
-		.logo {
-			font-size: 21px;
-			font-weight: 900;
-			letter-spacing: 2px;
-		}
-
-		.logo span {
-			color: var(--cyan);
-		}
-
-		.nav-links {
-			display: flex;
-			gap: 32px;
-			align-items: center;
-			list-style: none;
-		}
-
-		.nav-links a {
-			color: var(--muted);
-			font-size: 14px;
-			transition: .3s;
-		}
-
-		.nav-links a:hover {
-			color: var(--cyan);
-		}
-
-		.menu-toggle {
-			display: none;
-			background: none;
-			color: white;
-			border: 0;
-			font-size: 27px;
-			cursor: pointer;
-		}
-
-		/* HERO */
-
-		.hero {
-			min-height: 100vh;
-			display: flex;
-			align-items: center;
-			position: relative;
-			overflow: hidden;
-			padding: 130px 0 90px;
-			background:
-				radial-gradient(ellipse at 75% 35%, rgba(0,112,255,.16), transparent 45%),
-				radial-gradient(ellipse at 15% 80%, rgba(0,210,255,.08), transparent 35%);
-		}
-
-		.hero-content {
-			max-width: 850px;
-			position: relative;
-			z-index: 2;
-		}
-
-		.eyebrow {
-			color: var(--cyan);
-			letter-spacing: 4px;
-			text-transform: uppercase;
-			font-size: 12px;
-			font-weight: 700;
-			margin-bottom: 24px;
-		}
-
-		.hero h1 {
-			font-size: clamp(48px, 8vw, 94px);
-			line-height: 1.04;
-			letter-spacing: -5px;
-			margin-bottom: 26px;
-		}
-
-		.gradient-text {
-			background: linear-gradient(90deg, #58aaff, #61f0ff);
-			background-clip: text;
-			-webkit-background-clip: text;
-			color: transparent;
-		}
-
-		.hero p {
-			max-width: 590px;
-			color: var(--muted);
-			font-size: 18px;
-			margin-bottom: 36px;
-		}
-
-		.actions {
-			display: flex;
-			gap: 15px;
-			flex-wrap: wrap;
-		}
-
-		.btn {
-			padding: 14px 25px;
-			border-radius: 7px;
-			font-weight: 700;
-			font-size: 14px;
-			display: inline-block;
-			transition: .3s;
-			cursor: pointer;
-		}
-
-		.btn-primary {
-			background: linear-gradient(110deg, #2787ff, #42d9f5);
-			color: #06101b;
-			border: none;
-		}
-
-		.btn-primary:hover {
-			transform: translateY(-4px);
-			box-shadow: 0 10px 35px rgba(40,150,255,.3);
-		}
-
-		.btn-outline {
-			border: 1px solid var(--border);
-			color: white;
-		}
-
-		.btn-outline:hover {
-			border-color: var(--cyan);
-			color: var(--cyan);
-		}
-
-		.hero-glow {
-			position: absolute;
-			width: 380px;
-			height: 380px;
-			border: 1px solid rgba(85,170,255,.12);
-			border-radius: 50%;
-			right: 5%;
-			top: 27%;
-			box-shadow:
-				0 0 90px rgba(0,125,255,.08),
-				inset 0 0 90px rgba(0,125,255,.08);
-		}
-
-		.hero-glow::before,
-		.hero-glow::after {
-			content: "";
-			position: absolute;
-			border: 1px solid rgba(85,230,255,.12);
-			border-radius: 50%;
-			inset: 35px;
-		}
-
-		.hero-glow::after {
-			inset: 80px;
-			border-color: rgba(85,170,255,.2);
-		}
-
-		/* GENERAL SECTIONS */
-
-		section {
-			padding: 105px 0;
-		}
-
-		.section-heading {
-			max-width: 650px;
-			margin-bottom: 48px;
-		}
-
-		.section-heading h2 {
-			font-size: clamp(32px, 5vw, 48px);
-			letter-spacing: -1.5px;
-			line-height: 1.2;
-			margin-bottom: 15px;
-		}
-
-		.section-heading p {
-			color: var(--muted);
-		}
-
-		.about {
-			background: #0a0e18;
-		}
-
-		.about-grid {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			gap: 60px;
-			align-items: center;
-		}
-
-		.about-text p {
-			color: var(--muted);
-			margin-bottom: 18px;
-		}
-
-		.about-panel {
-			min-height: 300px;
-			background:
-				radial-gradient(circle at center, rgba(40,140,255,.2), transparent 65%),
-				var(--surface);
-			border: 1px solid var(--border);
-			border-radius: 18px;
-			display: grid;
-			place-items: center;
-			text-align: center;
-			padding: 30px;
-		}
-
-		.infinity-symbol {
-			font-size: 110px;
-			line-height: 1;
-			color: var(--cyan);
-			text-shadow: 0 0 40px rgba(85,230,255,.45);
-		}
-
-		.about-panel h3 {
-			letter-spacing: 4px;
-			margin-top: 12px;
-		}
-
-		/* SERVICES */
-
-		.service-grid,
-		.project-grid {
-			display: grid;
-			grid-template-columns: repeat(3, 1fr);
-			gap: 20px;
-		}
-
-		.service-card,
-		.project-card {
-			padding: 30px;
-			border: 1px solid var(--border);
-			background: var(--surface);
-			border-radius: 12px;
-			transition: .3s;
-		}
-
-		.service-card:hover,
-		.project-card:hover {
-			transform: translateY(-7px);
-			border-color: rgba(85,230,255,.5);
-			background: #131d30;
-		}
-
-		.card-icon {
-			font-size: 30px;
-			margin-bottom: 20px;
-		}
-
-		.service-card h3,
-		.project-card h3 {
-			margin-bottom: 12px;
-		}
-
-		.service-card p,
-		.project-card p {
-			color: var(--muted);
-			font-size: 14px;
-		}
-
-		/* PROJECTS */
-
-		.projects {
-			background: #0a0e18;
-		}
-
-		.project-tag {
-			color: var(--cyan);
-			font-size: 11px;
-			text-transform: uppercase;
-			letter-spacing: 2px;
-			margin-bottom: 15px;
-			display: block;
-		}
-
-		/* CONTACT */
-
-		.contact {
-			text-align: center;
-		}
-
-		.contact .section-heading {
-			margin: 0 auto 35px;
-		}
-
-		.contact .section-heading p {
-			max-width: 520px;
-			margin: auto;
-		}
-
-		.contact-note {
-			color: var(--muted);
-			font-size: 13px;
-			margin-top: 18px;
-		}
-
-		/* FOOTER */
-
-		footer {
-			border-top: 1px solid var(--border);
-			padding: 30px 0;
-			color: var(--muted);
-			font-size: 13px;
-		}
-
-		.footer-content {
-			display: flex;
-			justify-content: space-between;
-			gap: 20px;
-			flex-wrap: wrap;
-		}
-
-		/* ANIMATIONS */
-
-		.reveal {
-			opacity: 0;
-			transform: translateY(25px);
-			transition: opacity .7s ease, transform .7s ease;
-		}
-
-		.reveal.visible {
-			opacity: 1;
-			transform: translateY(0);
-		}
-
-		/* MOBILE */
-
-		@media (max-width: 760px) {
-			.menu-toggle {
-				display: block;
-			}
-
-			.nav-links {
-				display: none;
-				position: absolute;
-				top: 76px;
-				left: 0;
-				width: 100%;
-				padding: 25px 5%;
-				background: #0c1220;
-				flex-direction: column;
-				align-items: flex-start;
-				gap: 22px;
-				border-bottom: 1px solid var(--border);
-			}
-
-			.nav-links.open {
-				display: flex;
-			}
-
-			.hero h1 {
-				letter-spacing: -2px;
-			}
-
-			.hero-glow {
-				width: 230px;
-				height: 230px;
-				right: -100px;
-				top: 50%;
-			}
-
-			.about-grid,
-			.service-grid,
-			.project-grid {
-				grid-template-columns: 1fr;
-			}
-
-			section {
-				padding: 75px 0;
-			}
-
-			.about-grid {
-				gap: 30px;
-			}
-		}
-
-		@media (prefers-reduced-motion: reduce) {
-			*, *::before, *::after {
-				scroll-behavior: auto !important;
-				transition-duration: .01ms !important;
-				animation-duration: .01ms !important;
-			}
-		}
-	</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>INFINITE IQ | Technology Without Limits</title>
+
+<meta name="description" content="INFINITE IQ creates digital solutions, website tools and technology experiences that help ideas become reality.">
+
+<!-- IMPORTANT: Keep your existing Google Search Console verification meta tag here. -->
+
+<style>
+:root {
+  --bg: #080a12;
+  --panel: #111522;
+  --purple: #9a7aff;
+  --text: #f5f5fa;
+  --muted: #a6a8b8;
+  --border: #282c40;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  width: 84%;
+  max-width: 1150px;
+  margin: auto;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(8,10,18,.94);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(15px);
+}
+
+nav {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.logo span {
+  color: var(--purple);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.nav-links a {
+  color: var(--muted);
+  font-size: 14px;
+  transition: .3s;
+}
+
+.nav-links a:hover {
+  color: var(--purple);
+}
+
+.nav-links .nav-cta {
+  background: var(--purple);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 7px;
+}
+
+.menu-btn {
+  display: none;
+  background: none;
+  border: 0;
+  color: white;
+  font-size: 27px;
+  cursor: pointer;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 130px 0 80px;
+  background:
+    radial-gradient(ellipse at 75% 35%, rgba(120,80,220,.18), transparent 45%),
+    radial-gradient(ellipse at 15% 80%, rgba(40,100,180,.10), transparent 40%);
+}
+
+.hero-content {
+  max-width: 780px;
+}
+
+.eyebrow {
+  color: var(--purple);
+  letter-spacing: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.hero h1 {
+  font-size: clamp(43px, 8vw, 82px);
+  line-height: 1.08;
+  margin: 25px 0;
+}
+
+.hero h1 span {
+  color: var(--purple);
+}
+
+.hero p {
+  color: var(--muted);
+  max-width: 620px;
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+.buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 35px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 23px;
+  background: var(--purple);
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: .3s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.15);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--border);
+}
+
+section {
+  padding: 100px 0;
+  scroll-margin-top: 75px;
+}
+
+.section-heading {
+  margin-bottom: 45px;
+}
+
+.section-heading .eyebrow {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.section-heading h2 {
+  font-size: clamp(30px, 5vw, 45px);
+  margin-bottom: 12px;
+}
+
+.section-heading p {
+  color: var(--muted);
+  max-width: 650px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.about-text p {
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+.about-visual {
+  min-height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: linear-gradient(135deg,#17152c,#101a2a);
+}
+
+.infinity-symbol {
+  font-size: 120px;
+  color: var(--purple);
+  text-shadow: 0 0 35px rgba(154,122,255,.5);
+}
+
+.services-grid,
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 22px;
+}
+
+.service-card,
+.project-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 27px;
+  transition: .3s;
+}
+
+.service-card:hover,
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--purple);
+}
+
+.card-icon {
+  font-size: 30px;
+  margin-bottom: 18px;
+}
+
+.service-card h3,
+.project-card h3 {
+  margin-bottom: 12px;
+}
+
+.service-card p,
+.project-card p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.project-card a {
+  display: inline-block;
+  margin-top: 20px;
+  color: var(--purple);
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.planner-section {
+  background:
+    radial-gradient(ellipse at 80% 50%, rgba(120,80,220,.16), transparent 55%),
+    #0d101b;
+}
+
+.planner-box {
+  border: 1px solid #504078;
+  background: linear-gradient(135deg,#17152b,#101522);
+  padding: 45px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+}
+
+.planner-box h2 {
+  font-size: clamp(27px,4vw,40px);
+  margin: 12px 0;
+}
+
+.planner-box p {
+  color: var(--muted);
+  max-width: 580px;
+}
+
+.contact-box {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  padding: 35px;
+  max-width: 750px;
+}
+
+.contact-box p {
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 35px 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media(max-width:850px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 76px;
+    left: 0;
+    width: 100%;
+    background: #0d101b;
+    padding: 25px 8%;
+    flex-direction: column;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .services-grid,
+  .projects-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .planner-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media(max-width:550px) {
+  .container {
+    width: 90%;
+  }
+
+  section {
+    padding: 75px 0;
+  }
+
+  .services-grid,
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .planner-box {
+    padding: 28px;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-	<header>
-		<nav class="container">
-			<a href="#home" class="logo">INFINITE<span>IQ.</span></a>
+<header>
+  <nav class="container">
 
-			<button class="menu-toggle" id="menuToggle"
-				aria-label="Toggle navigation" aria-expanded="false">
-				☰
-			</button>
+    <a href="#home" class="logo">INFINITE <span>IQ.</span></a>
 
-			<ul class="nav-links" id="navLinks">
-				<li><a href="#home">Home</a></li>
-				<li><a href="#about">About</a></li>
-				<li><a href="#services">Services</a></li>
-				<li><a href="#projects">Projects</a></li>
-				<li><a href="#contact">Contact</a></li>
-			</ul>
-		</nav>
-	</header>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">
+      ☰
+    </button>
 
-	<main>
-		<section class="hero" id="home">
-			<div class="hero-glow"></div>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <a href="planner.html" class="nav-cta">Free Planner ↗</a>
+    </div>
 
-			<div class="container">
-				<div class="hero-content reveal">
-					<div class="eyebrow">Welcome to INFINITE IQ</div>
+  </nav>
+</header>
 
-					<h1>
-						Think Beyond.<br>
-						<span class="gradient-text">Create Without Limits.</span>
-					</h1>
+<main>
 
-					<p>
-						A space for ambitious ideas, creative thinking and
-						technology. The future begins with what we imagine today.
-					</p>
+<section class="hero" id="home">
+  <div class="container hero-content reveal">
 
-					<div class="actions">
-						<a href="#projects" class="btn btn-primary">Explore Projects ↗</a>
-						<a href="#about" class="btn btn-outline">Discover Our Vision</a>
-					</div>
-				</div>
-			</div>
-		</section>
+    <div class="eyebrow">IDEAS WITHOUT LIMITS</div>
 
-		<section class="about" id="about">
-			<div class="container about-grid">
-				<div class="about-text reveal">
-					<div class="eyebrow">Who We Are</div>
-					<div class="section-heading">
-						<h2>Ideas have <span class="gradient-text">no limits.</span></h2>
-					</div>
+    <h1>Welcome to <span>INFINITE IQ.</span></h1>
 
-					<p>
-						INFINITE IQ is a growing digital brand built around
-						curiosity, innovation and the power of ideas.
-					</p>
+    <p>
+      We believe every great idea deserves the opportunity
+      to become something extraordinary. Explore digital
+      solutions, useful tools and technology built to turn
+      ideas into reality.
+    </p>
 
-					<p>
-						Our vision is to explore technology, create useful
-						digital experiences and turn ambitious ideas into reality.
-					</p>
+    <div class="buttons">
+      <a href="planner.html" class="btn">Try Our Free Planner →</a>
+      <a href="#about" class="btn btn-outline">Discover Our Vision</a>
+    </div>
 
-					<a href="#services" class="btn btn-outline">Explore More</a>
-				</div>
+  </div>
+</section>
 
-				<div class="about-panel reveal">
-					<div>
-						<div class="infinity-symbol">∞</div>
-						<h3>INFINITE IQ</h3>
-						<p>Beyond Ordinary Thinking</p>
-					</div>
-				</div>
-			</div>
-		</section>
+<section id="about">
+  <div class="container about-grid">
 
-		<section id="services">
-			<div class="container">
-				<div class="section-heading reveal">
-					<div class="eyebrow">What We Explore</div>
-					<h2>Built around <span class="gradient-text">possibilities.</span></h2>
-					<p>Our starting points for creating something meaningful.</p>
-				</div>
+    <div class="about-text reveal">
+      <div class="section-heading">
+        <span class="eyebrow">WHO WE ARE</span>
+        <h2>About INFINITE IQ</h2>
+      </div>
 
-				<div class="service-grid">
-					<article class="service-card reveal">
-						<div class="card-icon">⌘</div>
-						<h3>Technology</h3>
-						<p>Exploring digital tools and new ways to solve problems.</p>
-					</article>
+      <p>
+        INFINITE IQ is a growing digital technology brand
+        focused on creativity, innovation and practical
+        digital solutions.
+      </p>
 
-					<article class="service-card reveal">
-						<div class="card-icon">✧</div>
-						<h3>Innovation</h3>
-						<p>Turning creative ideas into useful digital experiences.</p>
-					</article>
+      <p>
+        Our mission is to make technology more useful and
+        accessible by building tools and experiences that
+        help people bring their ideas to life.
+      </p>
 
-					<article class="service-card reveal">
-						<div class="card-icon">◈</div>
-						<h3>Digital Creation</h3>
-						<p>Building websites, projects and products for the future.</p>
-					</article>
-				</div>
-			</div>
-		</section>
+      <p>
+        We are just getting started. Our vision is limitless.
+      </p>
+    </div>
 
-		<section class="projects" id="projects">
-			<div class="container">
-				<div class="section-heading reveal">
-					<div class="eyebrow">Our Work</div>
-					<h2>Ideas becoming <span class="gradient-text">reality.</span></h2>
-					<p>A place to showcase the projects we create and develop.</p>
-				</div>
+    <div class="about-visual reveal">
+      <div class="infinity-symbol">∞</div>
+    </div>
 
-				<div class="project-grid">
-					<article class="project-card reveal">
-						<span class="project-tag">Project 01</span>
-						<h3>INFINITE IQ Website</h3>
-						<p>The beginning of our digital journey and brand.</p>
-					</article>
+  </div>
+</section>
 
-					<article class="project-card reveal">
-						<span class="project-tag">Project 02</span>
-						<h3>Future Experiments</h3>
-						<p>A space for upcoming technology and creative experiments.</p>
-					</article>
+<section id="services">
+  <div class="container">
 
-					<article class="project-card reveal">
-						<span class="project-tag">Project 03</span>
-						<h3>Coming Soon</h3>
-						<p>New ideas are always being explored. Stay curious.</p>
-					</article>
-				</div>
-			</div>
-		</section>
+    <div class="section-heading reveal">
+      <span class="eyebrow">WHAT WE DO</span>
+      <h2>Our Services</h2>
+      <p>Digital solutions designed to help ideas grow.</p>
+    </div>
 
-		<section class="contact" id="contact">
-			<div class="container">
-				<div class="section-heading reveal">
-					<div class="eyebrow">Let's Connect</div>
-					<h2>Every great thing <span class="gradient-text">starts somewhere.</span></h2>
-					<p>
-						Have an idea, a project or an opportunity?
-						Let's start a conversation.
-					</p>
-				</div>
+    <div class="services-grid">
 
-				<a href="mailto:YOUR_EMAIL_HERE" class="btn btn-primary" id="contactButton">
-					Get In Touch ↗
-				</a>
+      <article class="service-card reveal">
+        <div class="card-icon">💻</div>
+        <h3>Website Development</h3>
+        <p>
+          Modern, responsive website experiences for
+          businesses, projects and personal brands.
+        </p>
+      </article>
 
-				<p class="contact-note">
-					Contact email will be added when the brand email is ready.
-				</p>
-			</div>
-		</section>
-	</main>
+      <article class="service-card reveal">
+        <div class="card-icon">🤖</div>
+        <h3>Digital Tools</h3>
+        <p>
+          Useful online tools designed to make everyday
+          digital tasks easier.
+        </p>
+      </article>
 
-	<footer>
-		<div class="container footer-content">
-			<a href="#home" class="logo">INFINITE<span>IQ.</span></a>
-			<p>© <span id="year"></span> INFINITE IQ. All rights reserved.</p>
-			<p>Think Beyond. ∞</p>
-		</div>
-	</footer>
+      <article class="service-card reveal">
+        <div class="card-icon">💡</div>
+        <h3>Digital Products</h3>
+        <p>
+          Practical digital resources, templates and
+          experiences that help people get started.
+        </p>
+      </article>
 
-	<script>
-		// Mobile navigation
-		const menuToggle = document.getElementById("menuToggle");
-		const navLinks = document.getElementById("navLinks");
+    </div>
+  </div>
+</section>
 
-		menuToggle.addEventListener("click", () => {
-			const isOpen = navLinks.classList.toggle("open");
-			menuToggle.setAttribute("aria-expanded", isOpen);
-			menuToggle.textContent = isOpen ? "✕" : "☰";
-		});
+<section class="planner-section" id="planner">
+  <div class="container">
 
-		// Close mobile menu after clicking a link
-		document.querySelectorAll(".nav-links a").forEach(link => {
-			link.addEventListener("click", () => {
-				navLinks.classList.remove("open");
-				menuToggle.setAttribute("aria-expanded", "false");
-				menuToggle.textContent = "☰";
-			});
-		});
+    <div class="planner-box reveal">
 
-		// Automatic copyright year
-		document.getElementById("year").textContent =
-			new Date().getFullYear();
+      <div>
+        <span class="eyebrow">FREE DIGITAL TOOL</span>
+        <h2>Have a business idea?</h2>
+        <p>
+          Turn your business information into a structured
+          starter website plan. Tell us what you do and
+          discover how your website could look.
+        </p>
+      </div>
 
-		// Reveal animations
-		const observer = new IntersectionObserver(entries => {
-			entries.forEach(entry => {
-				if (entry.isIntersecting) {
-					entry.target.classList.add("visible");
-					observer.unobserve(entry.target);
-				}
-			});
-		}, { threshold: 0.12 });
+      <a href="planner.html" class="btn">
+        Launch Free Planner →
+      </a>
 
-		document.querySelectorAll(".reveal").forEach(element => {
-			observer.observe(element);
-		});
+    </div>
 
-		// Contact button: replace this with your real email later
-		const contactEmail = "YOUR_EMAIL_HERE";
-		const contactButton = document.getElementById("contactButton");
+  </div>
+</section>
 
-		contactButton.addEventListener("click", event => {
-			if (contactEmail === "YOUR_EMAIL_HERE") {
-				event.preventDefault();
-				alert("Our contact email has not been added yet.");
-			} else {
-				contactButton.href = "mailto:" + contactEmail;
-			}
-		});
-	</script>
+<section id="projects">
+  <div class="container">
+
+    <div class="section-heading reveal">
+      <span class="eyebrow">OUR WORK</span>
+      <h2>Featured Projects</h2>
+      <p>Our growing collection of digital experiences.</p>
+    </div>
+
+    <div class="projects-grid">
+
+      <article class="project-card reveal">
+        <div class="card-icon">🧠</div>
+        <h3>Business Website Planner</h3>
+        <p>
+          A free tool that helps business owners organise
+          their ideas into a website plan.
+        </p>
+        <a href="planner.html">Explore Project →</a>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="card-icon">🌐</div>
+        <h3>Website Development</h3>
+        <p>
+          Creating responsive digital experiences
+          with modern web technologies.
+        </p>
+        <a href="#contact">Learn More →</a>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="card-icon">🚀</div>
+        <h3>Future Innovations</h3>
+        <p>
+          More digital tools and creative projects
+          are in development.
+        </p>
+        <a href="#contact">Stay Connected →</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+
+    <div class="section-heading reveal">
+      <span class="eyebrow">GET IN TOUCH</span>
+      <h2>Let's Build Something.</h2>
+      <p>
+        Have an idea, a question or a project in mind?
+        We'd love to hear about it.
+      </p>
+    </div>
+
+    <div class="contact-box reveal">
+      <h3>Let's connect.</h3>
+      <p>
+        Contact information will be added here as
+        INFINITE IQ grows.
+      </p>
+      <a href="planner.html" class="btn">
+        Explore Our Free Tool →
+      </a>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-content">
+    <div><strong>INFINITE IQ.</strong> Ideas Without Limits.</div>
+    <div>© 2026 INFINITE IQ. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+  const isOpen = navLinks.classList.toggle("active");
+  menuBtn.setAttribute("aria-expanded", isOpen);
+  menuBtn.textContent = isOpen ? "✕" : "☰";
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("active");
+    menuBtn.setAttribute("aria-expanded", "false");
+    menuBtn.textContent = "☰";
+  });
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, {threshold: 0.12});
+
+document.querySelectorAll(".reveal").forEach(element => {
+  observer.observe(element);
+});
+</script>
 
 </body>
 </html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INFINITE IQ | Website Planner</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+font-family:Arial,sans-serif;
+background:#080a12;
+color:#f5f5fa;
+min-height:100vh;
+}
+
+header{
+padding:23px 8%;
+border-bottom:1px solid #24283b;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{font-size:22px;font-weight:bold;letter-spacing:2px}
+.logo span{color:#9d7aff}
+
+header a{color:#aaa;text-decoration:none;font-size:14px}
+
+main{max-width:900px;margin:65px auto;padding:20px}
+
+.tag{color:#a88aff;font-size:12px;letter-spacing:3px;font-weight:bold}
+
+h1{font-size:clamp(35px,7vw,58px);margin:18px 0}
+h1 span{color:#a88aff}
+
+.intro{color:#a5a6b5;line-height:1.8;margin-bottom:35px}
+
+.panel{
+background:#111421;
+border:1px solid #292e43;
+border-radius:18px;
+padding:30px;
+}
+
+label{display:block;margin:20px 0 9px;font-weight:bold}
+
+input,textarea,select{
+width:100%;
+padding:14px;
+border-radius:9px;
+border:1px solid #343950;
+background:#090d19;
+color:white;
+font-size:15px;
+}
+
+textarea{min-height:95px;resize:vertical}
+
+button{
+padding:15px;
+border:none;
+border-radius:9px;
+background:#9270ff;
+color:white;
+font-size:15px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{filter:brightness(1.15)}
+
+.generate{width:100%;margin-top:25px}
+
+#result{
+display:none;
+margin-top:35px;
+}
+
+.report{
+background:#fff;
+color:#202033;
+border-radius:15px;
+padding:35px;
+line-height:1.7;
+}
+
+.report-header{
+border-bottom:2px solid #eee;
+padding-bottom:20px;
+margin-bottom:25px;
+}
+
+.report-header small{color:#7956d9;letter-spacing:2px;font-weight:bold}
+
+.report h2{font-size:28px;margin:8px 0}
+.report h3{color:#7653d2;margin:22px 0 7px}
+.report p{color:#555}
+.report ul{padding-left:22px;color:#555}
+
+.actions{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:18px;
+}
+
+.actions button{flex:1;min-width:130px}
+.copy{background:#33394e}
+.restart{background:#22283b}
+
+.success{
+color:#a88aff;
+margin-top:12px;
+font-size:13px;
+}
+
+footer{
+text-align:center;
+padding:35px;
+color:#777;
+font-size:13px;
+}
+
+@media(max-width:600px){
+header{padding:20px}
+main{margin:35px auto}
+.panel{padding:20px}
+.report{padding:22px}
+.actions{flex-direction:column}
+.actions button{width:100%}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">INFINITE <span>IQ.</span></div>
+<a href="index.html">Main website ↗</a>
+</header>
+
+<main>
+
+<div class="tag">INFINITE IQ DIGITAL TOOLS</div>
+
+<h1>Build your business <span>website plan.</span></h1>
+
+<p class="intro">
+Turn your business ideas into a clear website plan.
+Complete the information below and receive your personalised starter report.
+</p>
+
+<section class="panel">
+
+<form id="plannerForm">
+
+<label for="business">Business name</label>
+<input id="business" placeholder="e.g. Nova Street" required>
+
+<label for="type">Business category</label>
+<select id="type" required>
+<option value="">Choose a category</option>
+<option>Clothing and fashion</option>
+<option>Restaurant and food</option>
+<option>Technology</option>
+<option>Beauty and skincare</option>
+<option>Education</option>
+<option>Photography</option>
+<option>Other</option>
+</select>
+
+<label for="services">What do you sell or offer?</label>
+<textarea id="services" placeholder="Describe your products or services..." required></textarea>
+
+<label for="customers">Who are your customers?</label>
+<input id="customers" placeholder="e.g. Students and young adults" required>
+
+<label for="style">Preferred website style</label>
+<select id="style">
+<option>Modern and professional</option>
+<option>Minimal and elegant</option>
+<option>Bold and colourful</option>
+<option>Luxury and premium</option>
+</select>
+
+<button class="generate" type="submit">
+Generate My Website Plan →
+</button>
+
+</form>
+
+<div id="result">
+
+<div class="report" id="report">
+
+<div class="report-header">
+<small>INFINITE IQ • BUSINESS PLANNER</small>
+<h2 id="reportTitle">Your Website Plan</h2>
+<p>Your personalised website planning report</p>
+</div>
+
+<div id="output"></div>
+
+<div style="margin-top:30px;border-top:1px solid #eee;padding-top:15px;color:#888;font-size:12px">
+Created with INFINITE IQ Business Website Planner.
+</div>
+
+</div>
+
+<div class="actions">
+<button id="downloadButton" type="button">↓ Download Plan</button>
+<button class="copy" id="copyButton" type="button">Copy Plan</button>
+<button class="restart" id="restartButton" type="button">↻ Start Again</button>
+</div>
+
+<p class="success" id="status"></p>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+© 2026 INFINITE IQ. Ideas Without Limits.
+</footer>
+
+<script>
+
+const form = document.getElementById("plannerForm");
+const result = document.getElementById("result");
+const output = document.getElementById("output");
+const status = document.getElementById("status");
+
+let currentPlan = "";
+
+function escapeHTML(value){
+return value.replace(/[&<>"']/g, function(character){
+return {
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
+}[character];
+});
+}
+
+form.addEventListener("submit",function(event){
+
+event.preventDefault();
+
+const business = document.getElementById("business").value.trim();
+const type = document.getElementById("type").value;
+const services = document.getElementById("services").value.trim();
+const customers = document.getElementById("customers").value.trim();
+const style = document.getElementById("style").value;
+
+const safeBusiness = escapeHTML(business);
+const safeType = escapeHTML(type);
+const safeServices = escapeHTML(services);
+const safeCustomers = escapeHTML(customers);
+const safeStyle = escapeHTML(style);
+
+document.getElementById("reportTitle").textContent =
+safeBusiness + " — Website Plan";
+
+output.innerHTML = `
+<h3>01. Business Overview</h3>
+<p><strong>${safeBusiness}</strong> operates in the ${safeType} industry.</p>
+
+<h3>02. Homepage Introduction</h3>
+<p>Welcome to ${safeBusiness}! We offer ${safeServices}. Our goal is to provide our customers with a valuable experience.</p>
+
+<h3>03. Target Audience</h3>
+<p>This website should be designed to appeal to ${safeCustomers}.</p>
+
+<h3>04. Recommended Website Sections</h3>
+<ul>
+<li>Home — Introduce your business.</li>
+<li>About — Tell your business story.</li>
+<li>Products and Services — Present what you offer.</li>
+<li>Testimonials — Display genuine customer feedback.</li>
+<li>Contact — Help visitors reach your business.</li>
+</ul>
+
+<h3>05. Design Direction</h3>
+<p>Your preferred style is ${safeStyle}.</p>
+
+<h3>06. Suggested Call to Action</h3>
+<p>"Discover what ${safeBusiness} has to offer today!"</p>
+
+<h3>07. Business Growth Recommendations</h3>
+<ul>
+<li>Use clear, high-quality product photographs.</li>
+<li>Make your website easy to navigate on phones.</li>
+<li>Explain your products and services clearly.</li>
+<li>Provide accurate contact information.</li>
+<li>Collect genuine customer feedback.</li>
+</ul>
+`;
+
+currentPlan =
+`${business} — WEBSITE PLAN
+
+BUSINESS OVERVIEW
+${business} operates in the ${type} industry.
+
+HOMEPAGE INTRODUCTION
+Welcome to ${business}! We offer ${services}.
+
+TARGET AUDIENCE
+${customers}
+
+RECOMMENDED WEBSITE SECTIONS
+Home
+About
+Products and Services
+Testimonials
+Contact
+
+DESIGN DIRECTION
+${style}
+
+SUGGESTED CALL TO ACTION
+Discover what ${business} has to offer today!
+
+BUSINESS GROWTH RECOMMENDATIONS
+Use quality photographs.
+Make the website mobile-friendly.
+Explain products and services clearly.
+Provide accurate contact information.
+Collect genuine customer feedback.
+
+Created with INFINITE IQ.`;
+
+result.style.display = "block";
+status.textContent = "";
+result.scrollIntoView({behavior:"smooth"});
+
+});
+
+document.getElementById("copyButton").addEventListener("click",async function(){
+
+try{
+await navigator.clipboard.writeText(currentPlan);
+status.textContent = "Your website plan has been copied!";
+}catch(error){
+status.textContent = "Copy unavailable. Try opening the page in Safari.";
+}
+
+});
+
+document.getElementById("downloadButton").addEventListener("click",function(){
+
+if(!currentPlan)return;
+
+const file = new Blob([currentPlan],{type:"text/plain;charset=utf-8"});
+const url = URL.createObjectURL(file);
+const link = document.createElement("a");
+
+link.href = url;
+link.download = "infinite-iq-website-plan.txt";
+link.click();
+
+URL.revokeObjectURL(url);
+
+status.textContent = "Your website plan has been downloaded!";
+
+});
+
+document.getElementById("restartButton").addEventListener("click",function(){
+
+form.reset();
+result.style.display = "none";
+currentPlan = "";
+status.textContent = "";
+
+form.scrollIntoView({behavior:"smooth"});
+
+});
+
+</script>
+
+</body>
+</html>
