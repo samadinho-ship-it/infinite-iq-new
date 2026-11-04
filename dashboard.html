@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INFINITE IQ | Project Dashboard</title>
+<style>
+:root{--bg:#080d18;--panel:#101a2b;--panel2:#152238;--line:#263750;--text:#f3f7ff;--muted:#9aabc3;--blue:#5c9dff;--cyan:#51e0dc;--purple:#a78bfa;--red:#ff7888}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at top right,#142b4b 0,transparent 35%),var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+header{display:flex;justify-content:space-between;align-items:center;padding:22px 5%;border-bottom:1px solid var(--line);gap:15px;flex-wrap:wrap}
+.logo{font-size:21px;font-weight:900;letter-spacing:2px}.logo span{color:var(--cyan)}
+header small{display:block;color:var(--muted);font-size:10px;letter-spacing:3px;margin-top:5px}
+a{color:var(--cyan);text-decoration:none}
+.container{max-width:1200px;margin:auto;padding:35px 5% 70px}
+.welcome{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:28px}
+h1{font-size:clamp(27px,5vw,40px);margin:0 0 9px}
+p{color:var(--muted);line-height:1.6}
+.btn{border:0;border-radius:10px;padding:12px 17px;background:linear-gradient(110deg,var(--blue),var(--cyan));color:#06111e;font-weight:800}
+.btn.secondary{background:var(--panel2);border:1px solid var(--line);color:var(--text)}
+.btn.danger{background:#3a1c2a;color:#ffb4bd;border:1px solid #743449}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:25px}
+.stat,.panel{background:linear-gradient(145deg,#121e32,#0e1727);border:1px solid var(--line);border-radius:17px;padding:20px}
+.stat small{color:var(--muted)}.stat strong{display:block;font-size:30px;margin-top:12px}
+.layout{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-bottom:18px}
+.panel h2{font-size:18px;margin:0 0 18px}
+.field{margin-bottom:13px}
+label{display:block;color:#c4d2e6;font-size:12px;margin-bottom:7px}
+input,select,textarea{width:100%;padding:12px;background:#091321;border:1px solid var(--line);border-radius:9px;color:var(--text);outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--cyan)}
+textarea{min-height:85px;resize:vertical}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:10px}
+.project{border:1px solid var(--line);background:#0c1728;border-radius:13px;padding:16px;margin-bottom:12px}
+.projecttop{display:flex;justify-content:space-between;gap:12px;align-items:start}
+.project h3{margin:0 0 6px;font-size:16px}
+.project p{font-size:13px;margin:5px 0}
+.tag{display:inline-block;padding:5px 9px;border-radius:30px;background:#1b3552;color:#9bc9ff;font-size:11px}
+.progress{height:7px;background:#26364d;border-radius:20px;overflow:hidden;margin:12px 0}
+.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.task{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--line);font-size:13px}
+.task input{width:auto}.task label{margin:0;flex:1;font-size:13px}
+.task.done label{text-decoration:line-through;color:var(--muted)}
+.muted{color:var(--muted);font-size:12px}
+.empty{padding:25px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:12px}
+.money{font-size:20px;font-weight:800;color:var(--cyan)}
+footer{text-align:center;color:var(--muted);padding:25px;border-top:1px solid var(--line);font-size:12px}
+@media(max-width:800px){.stats{grid-template-columns:repeat(2,1fr)}.layout{grid-template-columns:1fr}}
+@media(max-width:480px){.formgrid{grid-template-columns:1fr}.container{padding-top:25px}.stat{padding:15px}.stat strong{font-size:25px}}
+</style>
+</head>
+<body>
+<header>
+	<div class="logo">INFINITE<span> IQ</span><small>PROJECT CONTROL CENTER</small></div>
+	<a href="index.html">← Back to website</a>
+</header>
+
+<main class="container">
+	<section class="welcome">
+		<div>
+			<h1>Project Dashboard</h1>
+			<p>Plan your work. Track progress. Build something remarkable.</p>
+		</div>
+		<button class="btn" onclick="document.getElementById('projectName').focus()">＋ New project</button>
+	</section>
+
+	<section class="stats">
+		<div class="stat"><small>Total projects</small><strong id="totalProjects">0</strong></div>
+		<div class="stat"><small>Active projects</small><strong id="activeProjects">0</strong></div>
+		<div class="stat"><small>Completed</small><strong id="completedProjects">0</strong></div>
+		<div class="stat"><small>Tasks remaining</small><strong id="remainingTasks">0</strong></div>
+	</section>
+
+	<section class="layout">
+		<div class="panel">
+			<h2>Create a project</h2>
+			<form id="projectForm">
+				<div class="field"><label for="projectName">Project name *</label><input id="projectName" required placeholder="e.g. NOVA THREADS website"></div>
+				<div class="formgrid">
+					<div class="field"><label for="clientName">Client / business</label><input id="clientName" placeholder="Client name"></div>
+					<div class="field"><label for="projectType">Project type</label><select id="projectType"><option>Website</option><option>Online store</option><option>Digital product</option><option>Branding</option><option>Other</option></select></div>
+					<div class="field"><label for="deadline">Deadline</label><input id="deadline" type="date"></div>
+					<div class="field"><label for="projectStatus">Status</label><select id="projectStatus"><option>Planning</option><option>In progress</option><option>On hold</option><option>Completed</option></select></div>
+					<div class="field"><label for="projectBudget">Agreed budget (KSh)</label><input id="projectBudget" type="number" min="0" placeholder="15000"></div>
+					<div class="field"><label for="projectPaid">Amount paid (KSh)</label><input id="projectPaid" type="number" min="0" placeholder="0"></div>
+				</div>
+				<div class="field"><label for="projectNotes">Project notes</label><textarea id="projectNotes" placeholder="What needs to be done?"></textarea></div>
+				<button class="btn" type="submit">Save project</button>
+			</form>
+		</div>
+
+		<div class="panel">
+			<h2>Quick task list</h2>
+			<form id="taskForm">
+				<div class="field"><label for="taskName">Task description</label><input id="taskName" required placeholder="e.g. Design homepage"></div>
+				<div class="field"><label for="taskProject">Project</label><select id="taskProject"><option value="">General task</option></select></div>
+				<div class="field"><label for="taskDue">Due date</label><input id="taskDue" type="date"></div>
+				<button class="btn" type="submit">＋ Add task</button>
+			</form>
+			<div style="margin-top:20px">
+				<h2>Tasks</h2>
+				<div id="taskList"></div>
+			</div>
+		</div>
+	</section>
+
+	<section class="layout">
+		<div class="panel">
+			<h2>Your projects</h2>
+			<div id="projectList"><div class="empty">No projects yet. Create your first one above.</div></div>
+		</div>
+		<div class="panel">
+			<h2>Payment overview</h2>
+			<p class="muted">Based on the budgets and payments you record.</p>
+			<div class="field"><label>Total agreed budget</label><div class="money" id="totalBudget">KSh 0</div></div>
+			<div class="field"><label>Total received</label><div class="money" id="totalPaid">KSh 0</div></div>
+			<div class="field"><label>Outstanding balance</label><div class="money" id="totalBalance">KSh 0</div></div>
+			<p class="muted">This is a manual record, not a payment processor or bank connection.</p>
+		</div>
+	</section>
+
+	<section class="panel">
+		<h2>Data and privacy</h2>
+		<p class="muted">Your dashboard data is stored in this browser on this device. Clearing browser data may erase it. It is not backed up or synced automatically.</p>
+		<div class="actions">
+			<button class="btn secondary" id="exportBtn">Export backup</button>
+			<button class="btn danger" id="clearBtn">Delete all dashboard data</button>
+		</div>
+	</section>
+</main>
+
+<footer>© 2026 INFINITE IQ · Ideas Without Limits.</footer>
+
+<script>
+const KEY="infiniteIQDashboardV1";
+let data={projects:[],tasks:[]};
+try{const saved=JSON.parse(localStorage.getItem(KEY));if(saved&&Array.isArray(saved.projects)&&Array.isArray(saved.tasks))data=saved}catch(e){}
+const $=id=>document.getElementById(id);
+const money=n=>"KSh "+Number(n||0).toLocaleString("en-KE");
+function save(){localStorage.setItem(KEY,JSON.stringify(data));render()}
+function safe(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function render(){
+ const projects=data.projects;
+ $("totalProjects").textContent=projects.length;
+ $("activeProjects").textContent=projects.filter(p=>p.status==="In progress").length;
+ $("completedProjects").textContent=projects.filter(p=>p.status==="Completed").length;
+ $("remainingTasks").textContent=data.tasks.filter(t=>!t.done).length;
+ const budget=projects.reduce((s,p)=>s+Number(p.budget||0),0);
+ const paid=projects.reduce((s,p)=>s+Number(p.paid||0),0);
+ $("totalBudget").textContent=money(budget);
+ $("totalPaid").textContent=money(paid);
+ $("totalBalance").textContent=money(budget-paid);
+ $("projectList").innerHTML=projects.length?projects.map(p=>{
+ const percent=p.budget>0?Math.min(100,Math.round(p.paid/p.budget*100)):0;
+ return `<article class="project">
+ <div class="projecttop"><div><h3>${safe(p.name)}</h3><p>${safe(p.client||"No client added")} · ${safe(p.type)}</p></div><span class="tag">${safe(p.status)}</span></div>
+ <p class="muted">Deadline: ${safe(p.deadline||"Not set")}</p>
+ <p class="muted">${safe(p.notes||"No notes")}</p>
+ <div class="progress"><span style="width:${percent}%"></span></div>
+ <p class="muted">Payment recorded: ${money(p.paid)} / ${money(p.budget)}</p>
+ <div class="actions"><button class="btn secondary" onclick="editProject('${p.id}')">Edit</button><button class="btn danger" onclick="deleteProject('${p.id}')">Delete</button></div>
+ </article>`}).join(""):'<div class="empty">No projects yet. Create your first one above.</div>';
+ $("taskProject").innerHTML='<option value="">General task</option>'+projects.map(p=>`<option value="${p.id}">${safe(p.name)}</option>`).join("");
+ $("taskList").innerHTML=data.tasks.length?data.tasks.map(t=>`<div class="task ${t.done?"done":""}">
+ <input type="checkbox" ${t.done?"checked":""} onchange="toggleTask('${t.id}')">
+ <label>${safe(t.name)}<div class="muted">${safe(projects.find(p=>p.id===t.project)?.name||"General")} · ${safe(t.due||"No due date")}</div></label>
+ <button class="btn danger" style="padding:6px 9px" onclick="deleteTask('${t.id}')">×</button>
+ </div>`).join(""):'<div class="empty">No tasks yet. Add one above.</div>';
+}
+$("projectForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ const p={id:crypto.randomUUID(),name:$("projectName").value.trim(),client:$("clientName").value.trim(),type:$("projectType").value,deadline:$("deadline").value,status:$("projectStatus").value,budget:Number($("projectBudget").value||0),paid:Number($("projectPaid").value||0),notes:$("projectNotes").value.trim()};
+ if(!p.name)return;
+ if(p.paid>p.budget&&p.budget>0){if(!confirm("The recorded payment is higher than the budget. Save anyway?"))return}
+ data.projects.push(p);e.target.reset();save();
+});
+$("taskForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ data.tasks.push({id:crypto.randomUUID(),name:$("taskName").value.trim(),project:$("taskProject").value,due:$("taskDue").value,done:false});
+ e.target.reset();save();
+});
+function toggleTask(id){const t=data.tasks.find(x=>x.id===id);if(t){t.done=!t.done;save()}}
+function deleteTask(id){if(confirm("Delete this task?")){data.tasks=data.tasks.filter(t=>t.id!==id);save()}}
+function deleteProject(id){if(confirm("Delete this project? Tasks linked to it will become general tasks.")){data.projects=data.projects.filter(p=>p.id!==id);data.tasks.forEach(t=>{if(t.project===id)t.project=""});save()}}
+function editProject(id){
+ const p=data.projects.find(x=>x.id===id);if(!p)return;
+ const name=prompt("Project name:",p.name);if(name===null)return;
+ const status=prompt("Status: Planning, In progress, On hold, or Completed",p.status);if(status===null)return;
+ const paid=prompt("Amount paid in KSh:",p.paid);if(paid===null)return;
+ p.name=name.trim()||p.name;
+ if(["Planning","In progress","On hold","Completed"].includes(status))p.status=status;
+ if(paid.trim()!==""&&Number.isFinite(Number(paid))&&Number(paid)>=0)p.paid=Number(paid);
+ save();
+}
+$("exportBtn").addEventListener("click",()=>{
+ const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+ const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="infinite-iq-dashboard-backup.json";a.click();URL.revokeObjectURL(url);
+});
+$("clearBtn").addEventListener("click",()=>{
+ if(confirm("This permanently deletes all projects and tasks saved in this browser. Export a backup first if you need one. Continue?")){data={projects:[],tasks:[]};save()}
+});
+render();
+</script>
+</body>
+</html>
