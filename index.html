@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +18,7 @@
   --border:rgba(255,255,255,.10);
   --gradient:linear-gradient(105deg,var(--purple),var(--cyan));
 }
+
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
 body{font-family:Arial,sans-serif;background:var(--bg);color:var(--white);line-height:1.7;overflow-x:hidden}
@@ -37,6 +37,8 @@ button{font:inherit}
 .nav-links a{font-size:12px;color:var(--muted);transition:.25s}
 .nav-links a:hover{color:var(--cyan)}
 .nav-links .nav-cta{padding:10px 15px;border-radius:25px;background:var(--gradient);color:#080812;font-weight:800}
+.nav-links .dashboard-link{color:var(--cyan);font-weight:800}
+.nav-links .portal-link{color:var(--purple);font-weight:800}
 .menu-btn{display:none;border:1px solid var(--border);background:var(--panel);color:white;font-size:22px;padding:5px 12px;border-radius:9px;cursor:pointer}
 
 /* GENERAL */
@@ -136,6 +138,8 @@ h1{font-size:clamp(47px,8vw,88px);line-height:1.04;letter-spacing:-3.8px;margin-
 .brief-points span{padding:8px 13px;border:1px solid var(--border);border-radius:30px;color:#d5d3e8;font-size:12px;background:rgba(255,255,255,.035)}
 .dashboard-box{border-color:rgba(164,119,255,.45);background:radial-gradient(circle at 90% 10%,rgba(164,119,255,.14),transparent 35%),linear-gradient(145deg,#151528,#10101d)}
 .dashboard-box .card-icon{margin:0 auto 18px;width:58px;height:58px;font-size:27px}
+.portal-box{border-color:rgba(92,221,255,.45);background:radial-gradient(circle at 10% 10%,rgba(92,221,255,.13),transparent 35%),radial-gradient(circle at 90% 90%,rgba(164,119,255,.16),transparent 35%),linear-gradient(145deg,#151528,#10101d)}
+.portal-box .card-icon{margin:0 auto 18px;width:58px;height:58px;font-size:27px;background:rgba(92,221,255,.12)}
 .tool-note{font-size:12px!important;margin-top:20px!important}
 
 /* FAQ */
@@ -206,6 +210,7 @@ footer strong{color:var(--white)}
  <div class="container nav-inner">
   <a href="#home" class="logo">INFINITE<span> IQ</span></a>
   <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false" aria-controls="navLinks">☰</button>
+
   <nav class="nav-links" id="navLinks" aria-label="Main navigation">
    <a href="#home">Home</a>
    <a href="#about">About</a>
@@ -216,6 +221,8 @@ footer strong{color:var(--white)}
    <a href="#tools">Our Tools</a>
    <a href="#faq">FAQ</a>
    <a href="#contact">Contact</a>
+   <a href="dashboard.html" class="dashboard-link">Dashboard ↗</a>
+   <a href="portal.html" class="portal-link">Client Portal ↗</a>
    <a href="brief.html" class="nav-cta">Build a Brief ↗</a>
   </nav>
  </div>
@@ -223,7 +230,6 @@ footer strong{color:var(--white)}
 
 <main>
 
-<!-- HERO -->
 <section class="hero" id="home">
  <div class="container hero-content reveal">
   <span class="eyebrow">INNOVATION · TECHNOLOGY · CREATIVITY</span>
@@ -245,7 +251,6 @@ footer strong{color:var(--white)}
  </div>
 </div>
 
-<!-- ABOUT -->
 <section id="about">
  <div class="container">
   <div class="section-heading reveal">
@@ -253,12 +258,14 @@ footer strong{color:var(--white)}
    <h2>Technology with <span class="gradient">purpose.</span></h2>
    <p>Good digital experiences should look thoughtful, feel simple and help people move towards their goals.</p>
   </div>
+
   <div class="about-grid">
    <div class="panel about-highlight reveal">
     <div class="big-mark">∞</div>
     <h3>Welcome to INFINITE IQ</h3>
     <p>INFINITE IQ is a digital solutions brand focused on creating accessible, modern experiences for businesses and individuals. We bring creativity and practical thinking together to help turn ideas into something people can use.</p>
    </div>
+
    <div class="panel reveal">
     <div class="feature-list">
      <div class="feature"><div class="feature-icon">✦</div><div><h3>Creative thinking</h3><p>We look for clear, thoughtful ways to present your idea online.</p></div></div>
@@ -270,7 +277,6 @@ footer strong{color:var(--white)}
  </div>
 </section>
 
-<!-- SERVICES -->
 <section class="soft-section" id="services">
  <div class="container">
   <div class="section-heading reveal">
@@ -278,6 +284,7 @@ footer strong{color:var(--white)}
    <h2>Digital solutions for <span class="gradient">what's next.</span></h2>
    <p>Explore the ways INFINITE IQ can help bring your next digital idea to life.</p>
   </div>
+
   <div class="cards">
    <article class="card reveal"><div class="card-icon">🌐</div><h3>Website development</h3><p>Modern, responsive websites for small businesses, creators and personal brands — designed to introduce your work and make it easy to get in touch.</p></article>
    <article class="card reveal"><div class="card-icon">⚡</div><h3>Digital tools</h3><p>Simple, focused online tools that help people organise information, plan projects and solve everyday problems.</p></article>
@@ -286,7 +293,6 @@ footer strong{color:var(--white)}
  </div>
 </section>
 
-<!-- PACKAGES -->
 <section class="packages" id="packages">
  <div class="container">
   <div class="section-heading reveal">
@@ -294,6 +300,7 @@ footer strong{color:var(--white)}
    <h2>Choose your <span class="gradient">starting point.</span></h2>
    <p>Choose the level that best matches your idea. We'll discuss your requirements and agree on the scope before work begins.</p>
   </div>
+
   <div class="cards">
    <article class="card package reveal">
     <div class="card-icon">🚀</div><h3>Starter Website</h3>
@@ -302,6 +309,7 @@ footer strong{color:var(--white)}
     <ul><li>One-page website</li><li>Mobile-friendly design</li><li>About and services sections</li><li>Contact information section</li><li>Basic search-friendly structure</li></ul>
     <a href="enquiry.html?package=starter" class="btn btn-secondary">Discuss Starter ↗</a>
    </article>
+
    <article class="card package featured reveal">
     <span class="popular">A GREAT PLACE TO START</span>
     <div class="card-icon">💎</div><h3>Professional Website</h3>
@@ -310,6 +318,7 @@ footer strong{color:var(--white)}
     <ul><li>Multi-section website</li><li>Custom visual design</li><li>Mobile-friendly layout</li><li>Projects or product showcase</li><li>Contact and call-to-action sections</li></ul>
     <a href="enquiry.html?package=professional" class="btn btn-primary">Discuss Professional ↗</a>
    </article>
+
    <article class="card package reveal">
     <div class="card-icon">👑</div><h3>Premium Website</h3>
     <p>For brands looking for a more customised digital experience.</p>
@@ -318,11 +327,11 @@ footer strong{color:var(--white)}
     <a href="enquiry.html?package=premium" class="btn btn-secondary">Discuss Premium ↗</a>
    </article>
   </div>
+
   <p class="package-note">Every project is different. Final pricing depends on the pages, features and requirements. Domains, hosting and third-party services may have separate costs.</p>
  </div>
 </section>
 
-<!-- PROCESS -->
 <section id="process">
  <div class="container">
   <div class="section-heading reveal">
@@ -330,6 +339,7 @@ footer strong{color:var(--white)}
    <h2>A clear path from idea <span class="gradient">to website.</span></h2>
    <p>We keep the process straightforward, with the project scope discussed before development starts.</p>
   </div>
+
   <div class="process-grid">
    <article class="process-card reveal"><h3>Tell us your idea</h3><p>Share what your business does, who your website is for and what you want it to achieve.</p></article>
    <article class="process-card reveal"><h3>Plan the project</h3><p>We discuss the pages, features, design direction, timeline and project quote.</p></article>
@@ -339,7 +349,6 @@ footer strong{color:var(--white)}
  </div>
 </section>
 
-<!-- WHY US -->
 <section class="soft-section" id="why-us">
  <div class="container">
   <div class="section-heading reveal">
@@ -347,6 +356,7 @@ footer strong{color:var(--white)}
    <h2>Built around <span class="gradient">what matters.</span></h2>
    <p>A good website is more than decoration. It should make your message clear and help visitors know what to do next.</p>
   </div>
+
   <div class="why-grid">
    <article class="why-item reveal"><div class="feature-icon">📱</div><div><h3>Designed for different screens</h3><p>Layouts are planned to work across phones, tablets and desktop screens.</p></div></article>
    <article class="why-item reveal"><div class="feature-icon">✦</div><div><h3>Clear visual direction</h3><p>Design choices support your brand and make information easier to follow.</p></div></article>
@@ -356,7 +366,6 @@ footer strong{color:var(--white)}
  </div>
 </section>
 
-<!-- OUR PROMISE -->
 <section class="trust-section" id="trust">
  <div class="container">
   <div class="section-heading reveal">
@@ -364,16 +373,17 @@ footer strong{color:var(--white)}
    <h2>Clarity at every <span class="gradient">step.</span></h2>
    <p>We're building INFINITE IQ around honest communication, clear expectations and useful digital work.</p>
   </div>
+
   <div class="trust-grid">
    <article class="trust-card reveal"><div class="trust-number">01</div><h3>Clear project scope</h3><p>We'll discuss the pages, features and requirements before work begins, so everyone understands what the project includes.</p></article>
    <article class="trust-card reveal"><div class="trust-number">02</div><h3>No surprise quotes</h3><p>You'll receive a project quote based on the agreed requirements. Any separate domain, hosting or third-party costs should be explained in advance.</p></article>
    <article class="trust-card reveal"><div class="trust-number">03</div><h3>Review before launch</h3><p>You'll have an opportunity to review the agreed website work and raise changes before the project is prepared for launch.</p></article>
   </div>
+
   <p class="trust-footnote">We're growing our work and experience. We don't publish made-up testimonials or claim results we can't verify.</p>
  </div>
 </section>
 
-<!-- OUR DIGITAL TOOLS -->
 <section id="tools">
  <div class="container">
   <div class="section-heading reveal">
@@ -414,7 +424,7 @@ footer strong{color:var(--white)}
 
   <div class="tool-divider"></div>
 
-  <!-- TOOL 03: PROJECT DASHBOARD -->
+  <!-- TOOL 03 -->
   <div class="planner-box dashboard-box reveal">
    <div class="card-icon">📊</div>
    <div class="tool-label">TOOL 03 · PROJECT DASHBOARD</div>
@@ -429,10 +439,30 @@ footer strong{color:var(--white)}
    <a href="dashboard.html" class="btn btn-primary">Open Project Dashboard ↗</a>
    <p class="tool-note">Free browser-based tool. Your dashboard information is stored locally on your device.</p>
   </div>
+
+  <div class="tool-divider"></div>
+
+  <!-- TOOL 04: CLIENT PORTAL -->
+  <div class="planner-box portal-box reveal">
+   <div class="card-icon">🌐</div>
+   <div class="tool-label">TOOL 04 · CLIENT PORTAL</div>
+   <h2>Your projects.<br><span class="gradient">One organised space.</span></h2>
+   <p>Welcome to the INFINITE IQ Client Portal. Explore a dedicated space for project information, task progress, updates and important project details.</p>
+
+   <div class="brief-points">
+    <span>✦ Project overview</span>
+    <span>✦ Task progress</span>
+    <span>✦ Project updates</span>
+    <span>✦ Important details</span>
+   </div>
+
+   <a href="portal.html" class="btn btn-primary">Explore Client Portal ↗</a>
+   <p class="tool-note">Portal preview for organising project information. It is currently a browser-based demo, not a live client account or shared database.</p>
+  </div>
+
  </div>
 </section>
 
-<!-- FAQ -->
 <section class="soft-section" id="faq">
  <div class="container">
   <div class="section-heading reveal">
@@ -440,18 +470,25 @@ footer strong{color:var(--white)}
    <h2>Frequently asked <span class="gradient">questions.</span></h2>
    <p>A few useful details before you send a project enquiry.</p>
   </div>
+
   <div class="faq-list reveal">
    <details class="faq-item"><summary>How do I get a quote?</summary><div class="faq-answer">Choose a package or send a general enquiry. Tell us what you need, and we'll discuss the project scope before providing a quote.</div></details>
+
    <details class="faq-item"><summary>Do I need to know exactly what I want?</summary><div class="faq-answer">No. You can describe your business and your main goals. The free Business Website Planner and Project Brief Builder can also help you organise your starting ideas.</div></details>
+
    <details class="faq-item"><summary>Will my website work on mobile phones?</summary><div class="faq-answer">Mobile-friendly layouts are included in the website packages. The final design is planned for phones as well as larger screens.</div></details>
+
    <details class="faq-item"><summary>Are domain names and hosting included?</summary><div class="faq-answer">Not automatically. Domain names, hosting and some third-party services may have separate costs. These details should be agreed before the project starts.</div></details>
+
    <details class="faq-item"><summary>Does sending an enquiry mean I have to pay?</summary><div class="faq-answer">No. Sending an enquiry is just the first step in discussing your idea. Scope, pricing and arrangements are discussed before any work begins.</div></details>
+
    <details class="faq-item"><summary>Are the INFINITE IQ tools free?</summary><div class="faq-answer">The Business Website Planner, Project Brief Builder and Project Dashboard are free browser-based tools. They do not require a paid AI subscription or API. Dashboard data stays in the browser on the device where it was entered.</div></details>
+
+   <details class="faq-item"><summary>What is the Client Portal?</summary><div class="faq-answer">The Client Portal is a project information preview where visitors can explore a project overview, tasks and updates. The current version is a demo and does not provide real client accounts or live shared project updates.</div></details>
   </div>
  </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
  <div class="container">
   <div class="section-heading reveal">
@@ -459,6 +496,7 @@ footer strong{color:var(--white)}
    <h2>Your idea could be <span class="gradient">the next step.</span></h2>
    <p>Tell us what you're planning. A clear starting point can turn a big idea into a practical project.</p>
   </div>
+
   <div class="contact-grid">
    <div class="panel reveal">
     <h3>Let's understand your vision.</h3>
@@ -469,6 +507,7 @@ footer strong{color:var(--white)}
      <p><strong>Tagline:</strong> Ideas Without Limits.</p>
     </div>
    </div>
+
    <div class="panel contact-card reveal">
     <h3>Ready to get started?</h3>
     <p>Send a project enquiry with your goals and requirements. We'll use it as the starting point for a conversation.</p>
@@ -481,19 +520,20 @@ footer strong{color:var(--white)}
 
 </main>
 
-<!-- FOOTER -->
 <footer>
  <div class="container footer-inner">
   <div>
    <p><strong>INFINITE IQ</strong> — Ideas Without Limits.</p>
    <p>© <span id="year"></span> INFINITE IQ. All rights reserved.</p>
   </div>
+
   <nav class="footer-links" aria-label="Footer navigation">
    <a href="#home">Back to top ↑</a>
    <a href="#trust">Our Promise</a>
    <a href="planner.html">Free Planner</a>
    <a href="brief.html">Project Brief Builder</a>
    <a href="dashboard.html">Project Dashboard</a>
+   <a href="portal.html">Client Portal</a>
    <a href="enquiry.html">Enquiries</a>
   </nav>
  </div>
