@@ -48,10 +48,7 @@ body::before {
 a { text-decoration:none; color:inherit; }
 button { font:inherit; }
 
-.container {
-  width:min(1140px,90%);
-  margin:auto;
-}
+.container { width:min(1140px,90%); margin:auto; }
 
 .gradient {
   background:var(--gradient);
@@ -91,11 +88,11 @@ button { font:inherit; }
 .nav-links {
   display:flex;
   align-items:center;
-  gap:23px;
+  gap:19px;
 }
 
 .nav-links a {
-  font-size:13px;
+  font-size:12px;
   color:var(--muted);
   transition:.25s;
 }
@@ -103,7 +100,7 @@ button { font:inherit; }
 .nav-links a:hover { color:var(--cyan); }
 
 .nav-links .nav-cta {
-  padding:10px 17px;
+  padding:10px 15px;
   border-radius:25px;
   background:var(--gradient);
   color:#080812;
@@ -252,7 +249,7 @@ h1 {
   font-size:12px;
 }
 
-/* BRAND VALUES STRIP */
+/* BRAND VALUES */
 
 .trust-strip {
   border-top:1px solid var(--border);
@@ -298,11 +295,7 @@ h1 {
   padding:32px;
 }
 
-.panel h3 {
-  font-size:23px;
-  margin-bottom:13px;
-}
-
+.panel h3 { font-size:23px; margin-bottom:13px; }
 .panel p { color:var(--muted); }
 
 .about-highlight {
@@ -319,10 +312,7 @@ h1 {
   margin-bottom:18px;
 }
 
-.feature-list {
-  display:grid;
-  gap:18px;
-}
+.feature-list { display:grid; gap:18px; }
 
 .feature {
   display:flex;
@@ -342,15 +332,8 @@ h1 {
   font-size:19px;
 }
 
-.feature h3 {
-  font-size:16px;
-  margin-bottom:3px;
-}
-
-.feature p {
-  font-size:13px;
-  color:var(--muted);
-}
+.feature h3 { font-size:16px; margin-bottom:3px; }
+.feature p { font-size:13px; color:var(--muted); }
 
 /* CARDS AND SERVICES */
 
@@ -385,15 +368,8 @@ h1 {
   margin-bottom:20px;
 }
 
-.card h3 {
-  font-size:19px;
-  margin-bottom:10px;
-}
-
-.card p {
-  color:var(--muted);
-  font-size:14px;
-}
+.card h3 { font-size:19px; margin-bottom:10px; }
+.card p { color:var(--muted); font-size:14px; }
 
 .soft-section {
   background:linear-gradient(180deg,rgba(15,15,30,.7),rgba(10,10,20,.8));
@@ -451,7 +427,7 @@ h1 {
   margin-top:28px;
 }
 
-/* OUR PROCESS */
+/* PROCESS */
 
 .process-grid {
   display:grid;
@@ -478,15 +454,8 @@ h1 {
   margin-bottom:22px;
 }
 
-.process-card h3 {
-  font-size:17px;
-  margin-bottom:8px;
-}
-
-.process-card p {
-  font-size:13px;
-  color:var(--muted);
-}
+.process-card h3 { font-size:17px; margin-bottom:8px; }
+.process-card p { font-size:13px; color:var(--muted); }
 
 /* WHY INFINITE IQ */
 
@@ -506,18 +475,10 @@ h1 {
 }
 
 .why-item .feature-icon { flex-shrink:0; }
+.why-item h3 { font-size:16px; margin-bottom:5px; }
+.why-item p { font-size:13px; color:var(--muted); }
 
-.why-item h3 {
-  font-size:16px;
-  margin-bottom:5px;
-}
-
-.why-item p {
-  font-size:13px;
-  color:var(--muted);
-}
-
-/* OUR PROMISE — NEW */
+/* OUR PROMISE */
 
 .trust-section {
   background:linear-gradient(180deg,rgba(14,14,28,.55),rgba(8,8,18,.2));
@@ -552,15 +513,8 @@ h1 {
   margin-bottom:23px;
 }
 
-.trust-card h3 {
-  font-size:19px;
-  margin-bottom:10px;
-}
-
-.trust-card p {
-  font-size:14px;
-  color:var(--muted);
-}
+.trust-card h3 { font-size:19px; margin-bottom:10px; }
+.trust-card p { font-size:14px; color:var(--muted); }
 
 .trust-footnote {
   margin:25px auto 0;
@@ -570,7 +524,7 @@ h1 {
   font-size:12px;
 }
 
-/* FREE PLANNER */
+/* FREE TOOLS */
 
 .planner-box {
   text-align:center;
@@ -590,6 +544,71 @@ h1 {
   color:var(--muted);
   max-width:620px;
   margin:0 auto 27px;
+}
+
+.tool-label {
+  color:var(--cyan);
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:2px;
+  margin-bottom:15px;
+}
+
+.tool-divider {
+  width:70px;
+  height:2px;
+  background:var(--gradient);
+  margin:25px auto;
+  border-radius:5px;
+}
+
+.tool-actions {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:13px;
+}
+
+.brief-box {
+  position:relative;
+  overflow:hidden;
+  border-color:rgba(92,221,255,.35);
+  background:
+    radial-gradient(circle at 90% 10%,rgba(92,221,255,.12),transparent 35%),
+    radial-gradient(circle at 10% 90%,rgba(164,119,255,.18),transparent 38%),
+    linear-gradient(145deg,#151528,#10101d);
+}
+
+.brief-box::after {
+  content:"✦";
+  position:absolute;
+  right:7%;
+  top:10%;
+  font-size:100px;
+  color:rgba(92,221,255,.07);
+  pointer-events:none;
+}
+
+.brief-content {
+  position:relative;
+  z-index:1;
+}
+
+.brief-points {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin:0 auto 28px;
+}
+
+.brief-points span {
+  padding:8px 13px;
+  border:1px solid var(--border);
+  border-radius:30px;
+  color:#d5d3e8;
+  font-size:12px;
+  background:rgba(255,255,255,.035);
 }
 
 /* FAQ */
@@ -694,7 +713,12 @@ footer strong { color:var(--white); }
   transform:translateY(0);
 }
 
-/* RESPONSIVE DESIGN */
+/* RESPONSIVE */
+
+@media(max-width:1050px) {
+  .nav-links { gap:12px; }
+  .nav-links a { font-size:11px; }
+}
 
 @media(max-width:900px) {
   .menu-btn { display:block; }
@@ -747,6 +771,7 @@ footer strong { color:var(--white); }
   .process-grid { grid-template-columns:1fr; }
   .btn { width:100%; }
   .buttons { width:100%; }
+  .tool-actions { flex-direction:column; }
 }
 
 @media(prefers-reduced-motion:reduce) {
@@ -785,9 +810,10 @@ footer strong { color:var(--white); }
       <a href="#packages">Packages</a>
       <a href="#process">Our Process</a>
       <a href="#trust">Our Promise</a>
+      <a href="#tools">Our Tools</a>
       <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
-      <a href="planner.html" class="nav-cta">Free Planner ↗</a>
+      <a href="brief.html" class="nav-cta">Build a Brief ↗</a>
     </nav>
 
   </div>
@@ -1156,7 +1182,7 @@ footer strong { color:var(--white); }
   </div>
 </section>
 
-<!-- OUR PROMISE: NEW SECTION -->
+<!-- OUR PROMISE -->
 
 <section class="trust-section" id="trust">
   <div class="container">
@@ -1214,14 +1240,28 @@ footer strong { color:var(--white); }
   </div>
 </section>
 
-<!-- FREE PLANNER -->
+<!-- OUR DIGITAL TOOLS -->
 
-<section id="planner">
+<section id="tools">
   <div class="container">
+
+    <div class="section-heading reveal">
+      <span class="eyebrow">EXPLORE OUR FREE TOOLS</span>
+
+      <h2>
+        A smarter way to <span class="gradient">get started.</span>
+      </h2>
+
+      <p>
+        INFINITE IQ is building practical tools to help people organise their ideas and take the next step with confidence.
+      </p>
+    </div>
+
+    <!-- BUSINESS WEBSITE PLANNER -->
 
     <div class="planner-box reveal">
 
-      <span class="eyebrow">A FREE TOOL BY INFINITE IQ</span>
+      <div class="tool-label">TOOL 01 · BUSINESS WEBSITE PLANNER</div>
 
       <h2>
         Start with a plan.<br>
@@ -1232,11 +1272,61 @@ footer strong { color:var(--white); }
         Not sure what your business website needs? Use our free Business Website Planner to create a starter plan in minutes.
       </p>
 
+      <div class="tool-points brief-points">
+        <span>✦ Business overview</span>
+        <span>✦ Website sections</span>
+        <span>✦ Design direction</span>
+      </div>
+
       <a href="planner.html" class="btn btn-primary">
         Launch the free planner ↗
       </a>
 
     </div>
+
+    <div class="tool-divider"></div>
+
+    <!-- PROJECT BRIEF BUILDER -->
+
+    <div class="planner-box brief-box reveal">
+
+      <div class="brief-content">
+
+        <div class="tool-label">TOOL 02 · PROJECT BRIEF BUILDER</div>
+
+        <h2>
+          Turn your idea into<br>
+          <span class="gradient">a professional project brief.</span>
+        </h2>
+
+        <p>
+          Have a website idea but don't know how to explain it? Our Project Brief Builder helps organise your requirements into a clear project proposal, with suggested pages, features, a recommended package and a project roadmap.
+        </p>
+
+        <div class="brief-points">
+          <span>✦ Recommended package</span>
+          <span>✦ Suggested website pages</span>
+          <span>✦ Project roadmap</span>
+          <span>✦ Printable proposal</span>
+        </div>
+
+        <div class="tool-actions">
+          <a href="brief.html" class="btn btn-primary">
+            Build My Project Brief ↗
+          </a>
+
+          <a href="enquiry.html" class="btn btn-secondary">
+            Discuss a project
+          </a>
+        </div>
+
+        <p style="font-size:12px;margin-top:22px;">
+          Free to use. Your project details are processed in your browser.
+        </p>
+
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1269,7 +1359,7 @@ footer strong { color:var(--white); }
       <details class="faq-item">
         <summary>Do I need to know exactly what I want?</summary>
         <div class="faq-answer">
-          No. You can describe your business and your main goals. The free Business Website Planner can also help you organise your starting ideas.
+          No. You can describe your business and your main goals. The free Business Website Planner and Project Brief Builder can also help you organise your starting ideas.
         </div>
       </details>
 
@@ -1291,6 +1381,13 @@ footer strong { color:var(--white); }
         <summary>Does sending an enquiry mean I have to pay?</summary>
         <div class="faq-answer">
           No. Sending an enquiry is just the first step in discussing your idea. Scope, pricing and arrangements are discussed before any work begins.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Are the INFINITE IQ tools free?</summary>
+        <div class="faq-answer">
+          The Business Website Planner and Project Brief Builder are free browser-based tools. They do not require a paid AI subscription or API.
         </div>
       </details>
 
@@ -1367,6 +1464,7 @@ footer strong { color:var(--white); }
       <a href="#home">Back to top ↑</a>
       <a href="#trust">Our Promise</a>
       <a href="planner.html">Free Planner</a>
+      <a href="brief.html">Project Brief Builder</a>
       <a href="enquiry.html">Enquiries</a>
     </nav>
 
@@ -1432,5 +1530,6 @@ if ("IntersectionObserver" in window) {
 
 }
 </script>
+
 </body>
 </html>

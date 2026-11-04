@@ -1,0 +1,715 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b14">
+<title>INFINITE IQ | Project Studio</title>
+<style>
+:root {
+  --bg:#080b14;
+  --panel:#111827;
+  --panel2:#172238;
+  --text:#f4f7ff;
+  --muted:#9aa8bd;
+  --cyan:#54e5ff;
+  --purple:#9c7bff;
+  --line:rgba(255,255,255,.1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 10% 0%,#19294a,transparent 35%),
+    radial-gradient(circle at 90% 35%,#21183e,transparent 30%),
+    var(--bg);
+}
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 7%;
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  background:rgba(8,11,20,.94);
+  backdrop-filter:blur(15px);
+  z-index:10;
+}
+.logo{font-size:21px;font-weight:900;letter-spacing:2px}
+.logo span{color:var(--cyan)}
+header a{color:var(--muted);font-size:13px;text-decoration:none}
+header a:hover{color:var(--cyan)}
+main{max-width:1160px;margin:auto;padding:55px 22px 85px}
+.intro{text-align:center;margin-bottom:35px}
+.tag{color:var(--cyan);font-size:11px;letter-spacing:3px;font-weight:bold}
+h1{font-size:clamp(34px,6vw,58px);margin:16px 0}
+.gradient{
+  background:linear-gradient(100deg,var(--cyan),var(--purple));
+  color:transparent;
+  background-clip:text;
+  -webkit-background-clip:text;
+}
+.intro p{max-width:680px;margin:auto;color:var(--muted);line-height:1.8}
+.progress-wrap{max-width:700px;margin:0 auto 32px}
+.progress-label{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-bottom:9px}
+.progress-track{height:6px;background:#202b3e;border-radius:20px;overflow:hidden}
+.progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--purple));transition:.3s}
+.layout{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:start}
+.panel{
+  background:rgba(17,24,39,.96);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:26px;
+  box-shadow:0 20px 60px #0002;
+}
+h2{font-size:20px;margin:0 0 8px}
+.small{color:var(--muted);font-size:13px;line-height:1.7;margin:0 0 22px}
+label{display:block;font-size:13px;font-weight:bold;margin:19px 0 8px}
+input,select,textarea{
+  width:100%;
+  padding:14px;
+  border-radius:10px;
+  background:#0b1220;
+  color:var(--text);
+  border:1px solid var(--line);
+  font:inherit;
+  outline:none;
+}
+input:focus,select:focus,textarea:focus{border-color:var(--cyan)}
+textarea{min-height:105px;resize:vertical}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}
+.check{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  background:var(--panel2);
+  padding:12px;
+  border-radius:9px;
+  font-size:12px;
+  color:#dbe5f5;
+  margin:0;
+  cursor:pointer;
+  border:1px solid transparent;
+}
+.check:has(input:checked){border-color:var(--cyan)}
+.check input{width:auto;accent-color:var(--cyan)}
+button{
+  border:0;
+  border-radius:10px;
+  padding:13px 17px;
+  font-weight:bold;
+  cursor:pointer;
+  font-size:13px;
+  transition:.2s;
+}
+button:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.primary{
+  width:100%;
+  margin-top:25px;
+  color:#07111a;
+  background:linear-gradient(100deg,var(--cyan),var(--purple));
+}
+.secondary{color:var(--text);background:#202c40;border:1px solid var(--line)}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}
+.actions button{width:100%}
+.status{color:var(--cyan);font-size:12px;min-height:17px;margin-top:12px}
+.result{position:sticky;top:100px}
+.empty{
+  min-height:230px;
+  background:#0a1220;
+  border:1px dashed var(--line);
+  border-radius:13px;
+  padding:25px;
+  color:var(--muted);
+  display:grid;
+  place-content:center;
+  text-align:center;
+  line-height:1.7;
+  font-size:13px;
+}
+.proposal{display:none;background:#fff;color:#172033;border-radius:13px;overflow:hidden}
+.proposal-head{
+  padding:27px;
+  background:#0d1728;
+  color:white;
+  border-bottom:4px solid #54e5ff;
+}
+.proposal-brand{font-weight:900;letter-spacing:2px;font-size:18px}
+.proposal-brand span{color:#54e5ff}
+.proposal-head small{display:block;color:#b4c2d7;margin-top:8px}
+.proposal-body{padding:24px}
+.proposal h3{font-size:12px;letter-spacing:1.2px;color:#53627a;margin:22px 0 9px;text-transform:uppercase}
+.proposal h3:first-child{margin-top:0}
+.proposal p{font-size:13px;line-height:1.7;margin:6px 0;overflow-wrap:anywhere}
+.proposal ul{padding-left:19px;margin:8px 0}
+.proposal li{font-size:13px;line-height:1.8}
+.proposal-divider{height:1px;background:#e3e8ef;margin:17px 0}
+.package-highlight{background:#edf8ff;border:1px solid #c9eaff;border-radius:10px;padding:14px}
+.package-highlight strong{color:#086c92;font-size:16px}
+.package-grid{display:grid;grid-template-columns:1fr;gap:9px}
+.package-card{border:1px solid #e1e6ed;border-radius:9px;padding:12px}
+.package-card strong{font-size:13px}
+.package-card p{font-size:12px;color:#58677d}
+.proposal-foot{background:#f2f5f9;padding:16px 24px;color:#64748b;font-size:11px;line-height:1.6}
+.tool-note{color:var(--muted);font-size:11px;line-height:1.6;margin-top:15px}
+@media(max-width:850px){
+  .layout{grid-template-columns:1fr}
+  .result{position:static}
+}
+@media(max-width:450px){
+  .checks{grid-template-columns:1fr}
+  .panel{padding:19px}
+  header{padding:18px 5%}
+  main{padding-top:38px}
+}
+@media print{
+  @page{size:A4;margin:14mm}
+  body{background:white!important;color:#172033!important}
+  header,.intro,.progress-wrap,.form-panel,.result-title,.result-desc,
+  .actions,.status,.tool-note,footer{display:none!important}
+  main{padding:0!important;max-width:none!important}
+  .layout{display:block!important}
+  .result-panel{padding:0!important;border:0!important;background:white!important;box-shadow:none!important}
+  .proposal{display:block!important;overflow:visible!important}
+  .proposal-head,.proposal-foot,.package-highlight{
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+  .proposal h3{break-after:avoid}
+  .proposal li,.package-card{break-inside:avoid}
+}
+@media(prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto!important;transition:none!important}
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="logo">INFINITE <span>IQ</span></div>
+  <a href="index.html">← Back to website</a>
+</header>
+
+<main>
+  <section class="intro">
+    <div class="tag">INFINITE IQ PROJECT STUDIO</div>
+    <h1>Turn Your Idea Into <span class="gradient">A Plan.</span></h1>
+    <p>Tell us what you're building. Get a personalised website plan, package recommendation and professional project proposal.</p>
+  </section>
+
+  <div class="progress-wrap">
+    <div class="progress-label">
+      <span>Project details</span>
+      <span id="progressText">0% complete</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+  </div>
+
+  <div class="layout">
+    <section class="panel form-panel">
+      <h2>Tell us about your project</h2>
+      <p class="small">Fields marked * are required. The more details you provide, the more useful your proposal will be.</p>
+
+      <form id="briefForm">
+        <label for="name">Your name</label>
+        <input id="name" placeholder="Your full name">
+
+        <label for="business">Business or project name *</label>
+        <input id="business" placeholder="e.g. Nova Threads" required>
+
+        <label for="type">What type of website do you need? *</label>
+        <select id="type" required>
+          <option value="">Choose a website type</option>
+          <option>Business website</option>
+          <option>Personal brand website</option>
+          <option>Online store / e-commerce</option>
+          <option>Portfolio website</option>
+          <option>Blog or news website</option>
+          <option>Landing page</option>
+          <option>Other / Not sure yet</option>
+        </select>
+
+        <label for="audience">Who are your target customers?</label>
+        <input id="audience" placeholder="e.g. Local customers, students, businesses">
+
+        <label for="description">Describe your business or idea *</label>
+        <textarea id="description" placeholder="What do you offer? What problem do you solve?" required></textarea>
+
+        <label>Which features would you like?</label>
+        <div class="checks">
+          <label class="check"><input type="checkbox" value="Contact form"> Contact form</label>
+          <label class="check"><input type="checkbox" value="Online payments"> Online payments</label>
+          <label class="check"><input type="checkbox" value="Product gallery"> Product gallery</label>
+          <label class="check"><input type="checkbox" value="Booking system"> Booking system</label>
+          <label class="check"><input type="checkbox" value="WhatsApp contact"> WhatsApp contact</label>
+          <label class="check"><input type="checkbox" value="Blog or articles"> Blog or articles</label>
+          <label class="check"><input type="checkbox" value="Customer dashboard"> Customer dashboard</label>
+          <label class="check"><input type="checkbox" value="Mobile-friendly design"> Mobile-friendly design</label>
+          <label class="check"><input type="checkbox" value="Search and filtering"> Search and filtering</label>
+          <label class="check"><input type="checkbox" value="Newsletter signup"> Newsletter signup</label>
+        </div>
+
+        <label for="style">Preferred design style</label>
+        <select id="style">
+          <option value="">Choose a style</option>
+          <option>Modern and minimal</option>
+          <option>Premium and elegant</option>
+          <option>Bold and colourful</option>
+          <option>Dark and futuristic</option>
+          <option>Simple and professional</option>
+          <option>Let INFINITE IQ recommend one</option>
+        </select>
+
+        <label for="budget">Budget in mind</label>
+        <select id="budget">
+          <option value="">Prefer not to say</option>
+          <option>Still deciding</option>
+          <option>Under KSh 5,000</option>
+          <option>KSh 5,000–15,000</option>
+          <option>KSh 15,000–30,000</option>
+          <option>Above KSh 30,000</option>
+        </select>
+
+        <label for="timeline">Preferred timeline</label>
+        <select id="timeline">
+          <option value="">Not decided yet</option>
+          <option>As soon as reasonably possible</option>
+          <option>Within 2 weeks</option>
+          <option>Within 1 month</option>
+          <option>Within 2–3 months</option>
+          <option>Flexible timeline</option>
+        </select>
+
+        <button class="primary" type="submit">Create My Professional Proposal →</button>
+      </form>
+    </section>
+
+    <aside class="panel result result-panel">
+      <h2 class="result-title">Your project proposal</h2>
+      <p class="small result-desc">Your personalised proposal will appear here. You can print or save it as a PDF.</p>
+
+      <div class="empty" id="emptyState">
+        <div>
+          <strong style="color:#54e5ff">Your project starts here.</strong><br>
+          Complete the form and generate your proposal.
+        </div>
+      </div>
+
+      <article class="proposal" id="proposal">
+        <div class="proposal-head">
+          <div class="proposal-brand">INFINITE <span>IQ</span></div>
+          <small>Ideas Without Limits · Website Project Proposal</small>
+        </div>
+        <div class="proposal-body" id="proposalBody"></div>
+        <div class="proposal-foot">
+          Prepared by INFINITE IQ. This is an initial planning document, not a contract or final quotation. All project scope, costs and timelines must be agreed before work begins.
+        </div>
+      </article>
+
+      <div class="actions">
+        <button class="secondary" id="copyBtn" type="button">Copy report</button>
+        <button class="secondary" id="downloadBtn" type="button">Download text</button>
+        <button class="secondary" id="printBtn" type="button">Save as PDF / Print</button>
+        <button class="secondary" id="enquiryBtn" type="button">Continue to enquiry</button>
+      </div>
+
+      <p class="status" id="status" aria-live="polite"></p>
+      <p class="tool-note">Your answers are processed in your browser. This tool does not automatically send or store customer information.</p>
+    </aside>
+  </div>
+</main>
+
+<footer>© <span id="year"></span> INFINITE IQ · Ideas Without Limits.</footer>
+
+<script>
+"use strict";
+
+const form = document.getElementById("briefForm");
+const output = document.getElementById("proposalBody");
+const statusText = document.getElementById("status");
+const emptyState = document.getElementById("emptyState");
+const proposal = document.getElementById("proposal");
+
+let generatedBrief = "";
+let recommendedPackage = "starter";
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const progressFields = [
+  "name","business","type","audience",
+  "description","style","budget","timeline"
+];
+
+function updateProgress(){
+  let complete = 0;
+
+  progressFields.forEach(id => {
+    if(document.getElementById(id).value.trim()) complete++;
+  });
+
+  const checked = document.querySelectorAll(".checks input:checked").length;
+  const percentage = Math.round(
+    ((complete + (checked > 0 ? 1 : 0)) / (progressFields.length + 1)) * 100
+  );
+
+  document.getElementById("progressBar").style.width = percentage + "%";
+  document.getElementById("progressText").textContent = percentage + "% complete";
+}
+
+form.addEventListener("input", updateProgress);
+form.addEventListener("change", updateProgress);
+
+function escapeHTML(value){
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#039;"
+  })[char]);
+}
+
+function recommendPackage(type, features){
+  let score = 0;
+
+  if(type === "Online store / e-commerce") score += 3;
+  if(type === "Business website") score += 1;
+  if(type === "Personal brand website") score += 1;
+  if(type === "Portfolio website") score += 1;
+  if(type === "Blog or news website") score += 2;
+
+  if(features.includes("Online payments")) score += 2;
+  if(features.includes("Booking system")) score += 2;
+  if(features.includes("Customer dashboard")) score += 3;
+  if(features.includes("Search and filtering")) score += 2;
+  if(features.includes("Product gallery")) score += 1;
+  if(features.includes("Newsletter signup")) score += 1;
+  if(features.includes("Blog or articles")) score += 1;
+
+  if(score >= 6){
+    return {
+      name:"Premium",
+      key:"premium",
+      reason:"Your project includes several advanced requirements or more complex functionality."
+    };
+  }
+
+  if(score >= 3){
+    return {
+      name:"Professional",
+      key:"professional",
+      reason:"Your project needs a combination of useful features and a stronger business presence."
+    };
+  }
+
+  return {
+    name:"Starter",
+    key:"starter",
+    reason:"Your project appears to need a simpler, focused website."
+  };
+}
+
+function recommendPages(type){
+  const pages = {
+    "Business website":["Home","About","Services","Contact"],
+    "Personal brand website":["Home","About Me","My Work","Contact"],
+    "Online store / e-commerce":["Home","Shop / Products","Product Details","About","Contact"],
+    "Portfolio website":["Home","About","Portfolio / Projects","Contact"],
+    "Blog or news website":["Home","Articles","Article Details","About","Contact"],
+    "Landing page":["Landing Page","About / Benefits","Contact or Enquiry"],
+    "Other / Not sure yet":["Home","About","Main Content","Contact"]
+  };
+
+  return pages[type] || pages["Other / Not sure yet"];
+}
+
+const reasons = {
+  "Contact form":"Allows visitors to send questions and enquiries.",
+  "Online payments":"Can support online checkout through a suitable payment provider.",
+  "Product gallery":"Displays products visually for customers.",
+  "Booking system":"Can help visitors request or manage appointments.",
+  "WhatsApp contact":"Provides a familiar way for visitors to contact the business.",
+  "Blog or articles":"Creates space for news, updates and useful content.",
+  "Customer dashboard":"May provide customer accounts and personalised features; additional technical planning is needed.",
+  "Mobile-friendly design":"Helps the website work across phones, tablets and computers.",
+  "Search and filtering":"Helps visitors find relevant products or information.",
+  "Newsletter signup":"Allows visitors to subscribe to updates using a suitable email service."
+};
+
+function makeList(items){
+  return "<ul>" + items.map(item => "<li>" + escapeHTML(item) + "</li>").join("") + "</ul>";
+}
+
+function section(title, content){
+  return "<h3>" + title + "</h3>" + content;
+}
+
+function packageComparison(){
+  return `
+    <div class="package-grid">
+      <div class="package-card">
+        <strong>STARTER</strong>
+        <p>For simple websites with essential pages and a clear online presence.</p>
+      </div>
+      <div class="package-card">
+        <strong>PROFESSIONAL</strong>
+        <p>For growing businesses needing more pages, features and flexibility.</p>
+      </div>
+      <div class="package-card">
+        <strong>PREMIUM</strong>
+        <p>For larger or more complex projects with advanced functionality.</p>
+      </div>
+    </div>`;
+}
+
+const roadmap = [
+  "Discovery — understand the business, goals and audience.",
+  "Planning — agree on pages, features and project scope.",
+  "Design — establish the layout and visual direction.",
+  "Development — build the agreed website functionality.",
+  "Review — test the website and collect client feedback.",
+  "Launch — publish after approval and confirm handover."
+];
+
+form.addEventListener("submit", function(event){
+  event.preventDefault();
+
+  try {
+    const name = document.getElementById("name").value.trim() || "Not provided";
+    const business = document.getElementById("business").value.trim();
+    const type = document.getElementById("type").value;
+    const audience = document.getElementById("audience").value.trim() || "Not specified";
+    const description = document.getElementById("description").value.trim();
+    const style = document.getElementById("style").value || "Open to recommendations";
+    const budget = document.getElementById("budget").value || "Not specified";
+    const timeline = document.getElementById("timeline").value || "To be discussed";
+
+    if(!business || !type || !description){
+      statusText.textContent = "Please complete all three required fields.";
+      return;
+    }
+
+    const features = Array.from(
+      document.querySelectorAll(".checks input:checked")
+    ).map(item => item.value);
+
+    const pack = recommendPackage(type, features);
+    recommendedPackage = pack.key;
+
+    const pages = recommendPages(type);
+
+    const featureItems = features.length
+      ? features.map(item => item + ": " + reasons[item])
+      : ["No specific features selected yet."];
+
+    const date = new Date().toLocaleDateString();
+
+    const reportHTML =
+      section("01 · Client details",
+        "<p><strong>Name:</strong> " + escapeHTML(name) + "</p>" +
+        "<p><strong>Business:</strong> " + escapeHTML(business) + "</p>" +
+        "<p><strong>Prepared:</strong> " + escapeHTML(date) + "</p>") +
+
+      '<div class="proposal-divider"></div>' +
+
+      section("02 · Project overview",
+        "<p><strong>Website type:</strong> " + escapeHTML(type) + "</p>" +
+        "<p><strong>Target audience:</strong> " + escapeHTML(audience) + "</p>" +
+        "<p>" + escapeHTML(description).replace(/\n/g, "<br>") + "</p>") +
+
+      '<div class="proposal-divider"></div>' +
+
+      section("03 · Suggested website pages", makeList(pages)) +
+
+      '<div class="proposal-divider"></div>' +
+
+      section("04 · Requested features", makeList(featureItems)) +
+
+      '<div class="proposal-divider"></div>' +
+
+      section("05 · Design direction",
+        "<p><strong>Preferred style:</strong> " + escapeHTML(style) + "</p>" +
+        "<p>Use a consistent visual identity, clear navigation, readable content and a responsive layout that supports the business.</p>") +
+
+      '<div class="proposal-divider"></div>' +
+
+      section("06 · Recommended package",
+        '<div class="package-highlight"><strong>' +
+        escapeHTML(pack.name) + ' PACKAGE</strong><p>' +
+        escapeHTML(pack.reason) + '</p></div>' +
+        "<p>This is an automated starting recommendation. The final package depends on the confirmed project scope and technical requirements.</p>") +
+
+      section("Package overview", packageComparison()) +
+
+      '<div class="proposal-divider"></div>' +
+
+      section("07 · Project roadmap", makeList(roadmap)) +
+
+      '<div class="proposal-divider"></div>' +
+
+      section("08 · Client preparation checklist", makeList([
+        "Provide your business logo and brand colours, if available.",
+        "Prepare the text and images you want on the website.",
+        "List your products, services or main business information.",
+        "Identify websites you like for design inspiration.",
+        "Confirm who will review and approve the finished website."
+      ])) +
+
+      '<div class="proposal-divider"></div>' +
+
+      section("09 · Project preferences",
+        "<p><strong>Budget:</strong> " + escapeHTML(budget) + "</p>" +
+        "<p><strong>Preferred timeline:</strong> " + escapeHTML(timeline) + "</p>") +
+
+      section("10 · Next steps", makeList([
+        "Review this proposal.",
+        "Discuss requirements with INFINITE IQ.",
+        "Confirm the pages, features and project scope.",
+        "Agree on the final quotation and timeline.",
+        "Begin work after approval."
+      ]));
+
+    const reportText =
+`INFINITE IQ — WEBSITE PROJECT PROPOSAL
+Ideas Without Limits.
+
+CLIENT DETAILS
+Name: ${name}
+Business: ${business}
+Prepared: ${date}
+
+PROJECT OVERVIEW
+Website type: ${type}
+Target audience: ${audience}
+Description:
+${description}
+
+SUGGESTED WEBSITE PAGES
+${pages.map(item => "• " + item).join("\n")}
+
+REQUESTED FEATURES
+${featureItems.map(item => "• " + item).join("\n")}
+
+DESIGN DIRECTION
+${style}
+
+RECOMMENDED PACKAGE
+${pack.name}
+${pack.reason}
+
+PACKAGE OVERVIEW
+Starter: Simple websites and essential pages.
+Professional: Growing businesses needing more pages and features.
+Premium: Larger or more complex projects with advanced functionality.
+
+PROJECT ROADMAP
+${roadmap.map((item, index) => (index + 1) + ". " + item).join("\n")}
+
+CLIENT PREPARATION CHECKLIST
+• Provide logo and brand colours if available.
+• Prepare website text and images.
+• List products, services or business information.
+• Identify design inspiration.
+• Confirm who will approve the website.
+
+PROJECT PREFERENCES
+Budget: ${budget}
+Preferred timeline: ${timeline}
+
+NEXT STEPS
+• Review this proposal.
+• Discuss requirements with INFINITE IQ.
+• Confirm scope and features.
+• Agree on final quotation and timeline.
+• Begin work after approval.
+
+IMPORTANT
+This is an initial planning document, not a contract or final quotation.
+External services, hosting, domains and payment processing may involve
+separate costs and arrangements.
+
+INFINITE IQ
+Ideas Without Limits.`;
+
+    output.innerHTML = reportHTML;
+    generatedBrief = reportText;
+
+    emptyState.style.display = "none";
+    proposal.style.display = "block";
+    statusText.textContent = "Your professional proposal is ready!";
+
+    document.querySelector(".result").scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+
+  } catch(error) {
+    console.error("Proposal generation error:", error);
+    statusText.textContent = "Something went wrong. Please refresh and try again.";
+  }
+});
+
+document.getElementById("copyBtn").addEventListener("click", async function(){
+  if(!generatedBrief){
+    statusText.textContent = "Generate your proposal first.";
+    return;
+  }
+
+  try{
+    await navigator.clipboard.writeText(generatedBrief);
+    statusText.textContent = "Proposal copied successfully!";
+  }catch(error){
+    statusText.textContent = "Copy unavailable in this browser. Try Safari or Chrome.";
+  }
+});
+
+document.getElementById("downloadBtn").addEventListener("click", function(){
+  if(!generatedBrief){
+    statusText.textContent = "Generate your proposal first.";
+    return;
+  }
+
+  const blob = new Blob([generatedBrief], {
+    type:"text/plain;charset=utf-8"
+  });
+
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = "infinite-iq-project-proposal.txt";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  statusText.textContent = "Your text proposal is downloading.";
+});
+
+document.getElementById("printBtn").addEventListener("click", function(){
+  if(!generatedBrief){
+    statusText.textContent = "Generate your proposal first.";
+    return;
+  }
+  window.print();
+});
+
+document.getElementById("enquiryBtn").addEventListener("click", function(){
+  if(!generatedBrief){
+    statusText.textContent = "Generate your proposal first.";
+    return;
+  }
+
+  window.location.href =
+    "enquiry.html?package=" + encodeURIComponent(recommendedPackage);
+});
+</script>
+</body>
+</html>
