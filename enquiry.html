@@ -12,16 +12,22 @@
 
 body{
 font-family:Arial,sans-serif;
-background:#080812;color:#f7f5ff;
-min-height:100vh;padding:35px 18px;line-height:1.6
+background:#080812;
+color:#f7f5ff;
+min-height:100vh;
+padding:35px 18px;
+line-height:1.6
 }
 
 .container{max-width:720px;margin:auto}
 
 .logo{
-font-size:23px;font-weight:900;
-margin-bottom:35px;display:inline-block;
-text-decoration:none;color:white
+font-size:23px;
+font-weight:900;
+margin-bottom:35px;
+display:inline-block;
+text-decoration:none;
+color:white
 }
 
 .logo span{color:#9b6cff}
@@ -29,12 +35,15 @@ text-decoration:none;color:white
 .card{
 background:#111120;
 border:1px solid rgba(255,255,255,.12);
-border-radius:20px;padding:35px
+border-radius:20px;
+padding:35px
 }
 
 .tag{
-color:#50d9ff;font-size:12px;
-letter-spacing:2px;margin-bottom:12px
+color:#50d9ff;
+font-size:12px;
+letter-spacing:2px;
+margin-bottom:12px
 }
 
 h1{font-size:36px;line-height:1.2;margin-bottom:12px}
@@ -42,21 +51,28 @@ h1{font-size:36px;line-height:1.2;margin-bottom:12px}
 .gradient{
 background:linear-gradient(100deg,#9b6cff,#50d9ff);
 -webkit-background-clip:text;
-background-clip:text;color:transparent
+background-clip:text;
+color:transparent
 }
 
 .intro{color:#aaa8c0;margin-bottom:28px}
 
 label{
-display:block;font-size:14px;
-font-weight:bold;margin:20px 0 8px
+display:block;
+font-size:14px;
+font-weight:bold;
+margin:20px 0 8px
 }
 
 input,select,textarea{
-width:100%;padding:14px;
-background:#090916;color:white;
+width:100%;
+padding:14px;
+background:#090916;
+color:white;
 border:1px solid rgba(255,255,255,.15);
-border-radius:10px;font:inherit;outline:none
+border-radius:10px;
+font:inherit;
+outline:none
 }
 
 input:focus,select:focus,textarea:focus{
@@ -66,25 +82,39 @@ border-color:#9b6cff
 textarea{min-height:130px;resize:vertical}
 
 button{
-width:100%;margin-top:25px;padding:15px;
-border:0;border-radius:30px;
+width:100%;
+margin-top:25px;
+padding:15px;
+border:0;
+border-radius:30px;
 background:linear-gradient(100deg,#9b6cff,#6652dc);
-color:white;font-size:15px;font-weight:bold;
+color:white;
+font-size:15px;
+font-weight:bold;
 cursor:pointer
 }
 
 button:hover{opacity:.9}
 
-.note{color:#aaa8c0;font-size:12px;margin-top:15px}
+.note{
+color:#aaa8c0;
+font-size:12px;
+margin-top:15px
+}
 
 .back{
-display:inline-block;margin-top:25px;
-color:#50d9ff;text-decoration:none;font-size:14px
+display:inline-block;
+margin-top:25px;
+color:#50d9ff;
+text-decoration:none;
+font-size:14px
 }
 
 footer{
-text-align:center;color:#77758d;
-font-size:12px;margin-top:30px
+text-align:center;
+color:#77758d;
+font-size:12px;
+margin-top:30px
 }
 
 @media(max-width:600px){
@@ -98,7 +128,9 @@ h1{font-size:30px}
 
 <div class="container">
 
-<a href="index.html" class="logo">INFINITE<span> IQ</span></a>
+<a href="index.html" class="logo">
+INFINITE<span> IQ</span>
+</a>
 
 <div class="card">
 
@@ -111,16 +143,41 @@ Tell us about your business and your idea. We'll review your enquiry and get bac
 </p>
 
 <form
-action="https://formsubmit.co/infiniteiq210@gmail.com"
+action="https://formsubmit.app/f/negj8tb4h4"
 method="POST"
 >
 
-<input type="hidden" name="_subject" value="New INFINITE IQ Project Enquiry">
-<input type="hidden" name="_template" value="table">
+<input
+type="hidden"
+name="_subject"
+value="New INFINITE IQ Project Enquiry"
+>
+
+<input
+type="hidden"
+name="_replyto"
+id="replyTo"
+value=""
+>
+
+<input
+type="hidden"
+name="_ts"
+id="formTimestamp"
+value=""
+>
 
 <!-- Spam protection -->
-<input type="text" name="_honey"
-style="display:none" tabindex="-1" autocomplete="off">
+<div style="position:absolute;left:-9999px" aria-hidden="true">
+<label for="website">Leave this field empty</label>
+<input
+type="text"
+id="website"
+name="_gotcha"
+tabindex="-1"
+autocomplete="off"
+>
+</div>
 
 <label for="name">Your full name *</label>
 <input
@@ -170,15 +227,19 @@ maxlength="3000"
 placeholder="What kind of website do you want? What should it do?"
 ></textarea>
 
-<button type="submit">Send My Enquiry ↗</button>
+<button type="submit">
+Send My Enquiry ↗
+</button>
 
 </form>
 
 <p class="note">
-Your enquiry will be delivered to the INFINITE IQ business inbox after email activation.
+Your project enquiry will be submitted securely through our form service.
 </p>
 
-<a href="index.html" class="back">← Back to INFINITE IQ</a>
+<a href="index.html" class="back">
+← Back to INFINITE IQ
+</a>
 
 </div>
 
@@ -191,6 +252,16 @@ Your enquiry will be delivered to the INFINITE IQ business inbox after email act
 <script>
 document.getElementById("year").textContent =
 new Date().getFullYear();
+
+document.getElementById("formTimestamp").value =
+Date.now();
+
+const emailInput = document.getElementById("email");
+
+emailInput.addEventListener("input", function(){
+document.getElementById("replyTo").value =
+emailInput.value.trim();
+});
 
 const params = new URLSearchParams(window.location.search);
 const selected = params.get("package");
