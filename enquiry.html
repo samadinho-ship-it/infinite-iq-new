@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,50 +5,200 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080812">
 <title>Project Enquiry | INFINITE IQ</title>
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#080812;color:#f7f5ff;min-height:100vh;padding:35px 18px;line-height:1.6}
+
+body{
+font-family:Arial,sans-serif;
+background:#080812;
+color:#f7f5ff;
+min-height:100vh;
+padding:35px 18px;
+line-height:1.6
+}
+
 .container{max-width:720px;margin:auto}
-.logo{font-size:23px;font-weight:900;margin-bottom:35px;display:inline-block}
+
+.logo{
+font-size:23px;
+font-weight:900;
+margin-bottom:35px;
+display:inline-block;
+text-decoration:none;
+color:white
+}
+
 .logo span{color:#9b6cff}
-.card{background:#111120;border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:35px}
-.tag{color:#50d9ff;font-size:12px;letter-spacing:2px;margin-bottom:12px}
+
+.card{
+background:#111120;
+border:1px solid rgba(255,255,255,.12);
+border-radius:20px;
+padding:35px
+}
+
+.tag{
+color:#50d9ff;
+font-size:12px;
+letter-spacing:2px;
+margin-bottom:12px
+}
+
 h1{font-size:36px;line-height:1.2;margin-bottom:12px}
-.gradient{background:linear-gradient(100deg,#9b6cff,#50d9ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+.gradient{
+background:linear-gradient(100deg,#9b6cff,#50d9ff);
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent
+}
+
 .intro{color:#aaa8c0;margin-bottom:28px}
-label{display:block;font-size:14px;font-weight:bold;margin:20px 0 8px}
-input,select,textarea{width:100%;padding:14px;background:#090916;color:white;border:1px solid rgba(255,255,255,.15);border-radius:10px;font:inherit;outline:none}
-input:focus,select:focus,textarea:focus{border-color:#9b6cff}
+
+label{
+display:block;
+font-size:14px;
+font-weight:bold;
+margin:20px 0 8px
+}
+
+input,select,textarea{
+width:100%;
+padding:14px;
+background:#090916;
+color:white;
+border:1px solid rgba(255,255,255,.15);
+border-radius:10px;
+font:inherit;
+outline:none
+}
+
+input:focus,select:focus,textarea:focus{
+border-color:#9b6cff
+}
+
 textarea{min-height:130px;resize:vertical}
-button{width:100%;margin-top:25px;padding:15px;border:0;border-radius:30px;background:linear-gradient(100deg,#9b6cff,#6652dc);color:white;font-size:15px;font-weight:bold;cursor:pointer}
+
+button{
+width:100%;
+margin-top:25px;
+padding:15px;
+border:0;
+border-radius:30px;
+background:linear-gradient(100deg,#9b6cff,#6652dc);
+color:white;
+font-size:15px;
+font-weight:bold;
+cursor:pointer
+}
+
 button:hover{opacity:.9}
-.note{color:#aaa8c0;font-size:12px;margin-top:15px}
-#confirmation{display:none;margin-top:20px;padding:15px;background:#15251f;border:1px solid #347a58;border-radius:10px;color:#b8f2ce}
-.back{display:inline-block;margin-top:25px;color:#50d9ff;text-decoration:none;font-size:14px}
-footer{text-align:center;color:#77758d;font-size:12px;margin-top:30px}
+
+button:disabled{
+opacity:.6;
+cursor:not-allowed
+}
+
+.note{
+color:#aaa8c0;
+font-size:12px;
+margin-top:15px
+}
+
+.message{
+display:none;
+margin-top:20px;
+padding:15px;
+border-radius:10px;
+font-size:14px
+}
+
+.success{
+background:#15251f;
+border:1px solid #347a58;
+color:#b8f2ce
+}
+
+.error{
+background:#2a171b;
+border:1px solid #8b3945;
+color:#ffc4cb
+}
+
+.back{
+display:inline-block;
+margin-top:25px;
+color:#50d9ff;
+text-decoration:none;
+font-size:14px
+}
+
+footer{
+text-align:center;
+color:#77758d;
+font-size:12px;
+margin-top:30px
+}
+
+@media(max-width:600px){
+.card{padding:24px 19px}
+h1{font-size:30px}
+}
 </style>
 </head>
+
 <body>
+
 <div class="container">
-<a href="index.html" class="logo">INFINITE<span> IQ</span></a>
+
+<a href="index.html" class="logo">
+INFINITE<span> IQ</span>
+</a>
 
 <div class="card">
+
 <div class="tag">LET'S BUILD SOMETHING GREAT</div>
+
 <h1>Start Your <span class="gradient">Project.</span></h1>
-<p class="intro">Tell us about your business and your idea. We'll review your enquiry and get back to you.</p>
+
+<p class="intro">
+Tell us about your business and your idea. We'll review your enquiry and get back to you.
+</p>
 
 <form id="enquiryForm">
+
 <label for="name">Your full name *</label>
-<input id="name" required maxlength="100" placeholder="Enter your name">
+<input
+id="name"
+name="Customer Name"
+required
+maxlength="100"
+placeholder="Enter your name"
+>
 
 <label for="business">Business name *</label>
-<input id="business" required maxlength="100" placeholder="Enter your business name">
+<input
+id="business"
+name="Business Name"
+required
+maxlength="100"
+placeholder="Enter your business name"
+>
 
 <label for="email">Your email address *</label>
-<input id="email" type="email" required maxlength="150" placeholder="you@example.com">
+<input
+id="email"
+name="Customer Email"
+type="email"
+required
+maxlength="150"
+placeholder="you@example.com"
+>
 
 <label for="package">Which package interests you? *</label>
-<select id="package" required>
+
+<select id="package" name="Selected Package" required>
 <option value="">Choose a package</option>
 <option value="Starter Website">Starter Website</option>
 <option value="Professional Website">Professional Website</option>
@@ -58,24 +207,58 @@ footer{text-align:center;color:#77758d;font-size:12px;margin-top:30px}
 </select>
 
 <label for="description">Tell us about your project *</label>
-<textarea id="description" required maxlength="3000" placeholder="What kind of website do you want? What should it do?"></textarea>
 
-<button type="submit">Prepare My Enquiry ↗</button>
+<textarea
+id="description"
+name="Project Description"
+required
+maxlength="3000"
+placeholder="What kind of website do you want? What should it do?"
+></textarea>
+
+<!-- Spam protection -->
+<input
+type="text"
+name="_honey"
+style="display:none"
+tabindex="-1"
+autocomplete="off"
+>
+
+<button type="submit" id="submitButton">
+Send My Enquiry ↗
+</button>
+
 </form>
 
-<div id="confirmation" role="status">
-Your email draft has been prepared. Review the details and press Send in your email app to submit your enquiry.
+<div id="successMessage" class="message success" role="status">
+Your enquiry has been submitted successfully! Thank you for choosing INFINITE IQ.
 </div>
-<p class="note">Your email app will open with your enquiry prepared. You must press Send yourself.</p>
+
+<div id="errorMessage" class="message error" role="alert">
+Something went wrong. Please try again in a moment.
+</div>
+
+<p class="note">
+Your enquiry will be sent securely through our form service to the INFINITE IQ inbox.
+</p>
+
 <a href="index.html" class="back">← Back to INFINITE IQ</a>
+
 </div>
-<footer>© <span id="year"></span> INFINITE IQ · Ideas Without Limits.</footer>
+
+<footer>
+© <span id="year"></span> INFINITE IQ · Ideas Without Limits.
+</footer>
+
 </div>
 
 <script>
+
 const BUSINESS_EMAIL = "infiniteiq210@gmail.com";
 
-document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("year").textContent =
+new Date().getFullYear();
 
 const params = new URLSearchParams(window.location.search);
 const selected = params.get("package");
@@ -83,45 +266,82 @@ const selected = params.get("package");
 const packageSelect = document.getElementById("package");
 
 const packageOptions = {
-  starter: "Starter Website",
-  professional: "Professional Website",
-  premium: "Premium Website"
+starter: "Starter Website",
+professional: "Professional Website",
+premium: "Premium Website"
 };
 
-if (selected && packageOptions[selected]) {
-  packageSelect.value = packageOptions[selected];
+if(selected && packageOptions[selected]){
+packageSelect.value = packageOptions[selected];
 }
 
-document.getElementById("enquiryForm").addEventListener("submit", function(e) {
-  e.preventDefault();
+const form = document.getElementById("enquiryForm");
+const button = document.getElementById("submitButton");
 
-  if (BUSINESS_EMAIL === "YOUR_GMAIL_ADDRESS_HERE") {
-    alert("Please configure the INFINITE IQ business email first.");
-    return;
-  }
+const successMessage = document.getElementById("successMessage");
+const errorMessage = document.getElementById("errorMessage");
 
-  const name = document.getElementById("name").value.trim();
-  const business = document.getElementById("business").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const selectedPackage = packageSelect.value;
-  const description = document.getElementById("description").value.trim();
+form.addEventListener("submit", async function(e){
 
-  const subject = encodeURIComponent("New INFINITE IQ Project Enquiry");
-  const body = encodeURIComponent(
-    "NEW PROJECT ENQUIRY\n\n" +
-    "Customer: " + name + "\n" +
-    "Business: " + business + "\n" +
-    "Customer email: " + email + "\n" +
-    "Package: " + selectedPackage + "\n\n" +
-    "Project description:\n" + description
-  );
+e.preventDefault();
 
-  document.getElementById("confirmation").style.display = "block";
+successMessage.style.display = "none";
+errorMessage.style.display = "none";
 
-  window.location.href =
-    "mailto:" + BUSINESS_EMAIL +
-    "?subject=" + subject + "&body=" + body;
+if(!form.reportValidity()) return;
+
+button.disabled = true;
+button.textContent = "Sending Your Enquiry...";
+
+const formData = new FormData(form);
+
+const data = Object.fromEntries(formData.entries());
+
+data._subject = "New INFINITE IQ Project Enquiry";
+data._replyto = document.getElementById("email").value.trim();
+data._template = "table";
+
+try{
+
+const response = await fetch(
+"https://formsubmit.co/ajax/" + BUSINESS_EMAIL,
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json",
+"Accept":"application/json"
+},
+body:JSON.stringify(data)
+}
+);
+
+const result = await response.json();
+
+if(!response.ok || result.success !== "true" && result.success !== true){
+throw new Error("Submission failed");
+}
+
+successMessage.style.display = "block";
+form.reset();
+
+window.scrollTo({
+top:document.querySelector(".card").offsetTop,
+behavior:"smooth"
 });
+
+button.textContent = "Enquiry Sent ✓";
+
+}catch(error){
+
+errorMessage.style.display = "block";
+button.disabled = false;
+button.textContent = "Send My Enquiry ↗";
+
+}
+
+});
+
 </script>
+
 </body>
 </html>
