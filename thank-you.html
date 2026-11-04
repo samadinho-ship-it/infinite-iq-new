@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080812">
+<title>Thank You | INFINITE IQ</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:Arial,sans-serif;
+background:#080812;
+color:#f7f5ff;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:25px;
+overflow:hidden;
+}
+
+.background{
+position:fixed;
+width:450px;
+height:450px;
+border-radius:50%;
+background:#7950ff;
+filter:blur(160px);
+opacity:.16;
+top:10%;
+left:50%;
+transform:translateX(-50%);
+z-index:-1;
+}
+
+.container{
+width:100%;
+max-width:650px;
+text-align:center;
+}
+
+.logo{
+font-size:25px;
+font-weight:900;
+margin-bottom:55px;
+display:inline-block;
+color:white;
+text-decoration:none;
+letter-spacing:1px;
+}
+
+.logo span{color:#9b6cff}
+
+.card{
+background:rgba(17,17,32,.85);
+border:1px solid rgba(255,255,255,.12);
+border-radius:25px;
+padding:55px 35px;
+box-shadow:0 20px 80px rgba(0,0,0,.3);
+}
+
+.check{
+width:85px;
+height:85px;
+border-radius:50%;
+margin:0 auto 28px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:38px;
+color:#fff;
+background:linear-gradient(135deg,#9b6cff,#50d9ff);
+box-shadow:0 0 40px rgba(155,108,255,.3);
+animation:pop .7s ease;
+}
+
+.tag{
+color:#50d9ff;
+font-size:12px;
+letter-spacing:3px;
+margin-bottom:17px;
+}
+
+h1{
+font-size:clamp(34px,7vw,52px);
+line-height:1.15;
+margin-bottom:20px;
+}
+
+.gradient{
+background:linear-gradient(100deg,#9b6cff,#50d9ff);
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent;
+}
+
+.description{
+color:#aaa8c0;
+font-size:16px;
+line-height:1.8;
+max-width:480px;
+margin:0 auto 30px;
+}
+
+.next{
+background:#090916;
+border:1px solid rgba(255,255,255,.09);
+border-radius:15px;
+padding:22px;
+text-align:left;
+margin-bottom:30px;
+}
+
+.next h2{
+font-size:15px;
+margin-bottom:13px;
+}
+
+.next p{
+font-size:13px;
+color:#aaa8c0;
+line-height:1.8;
+}
+
+.button{
+display:inline-block;
+padding:15px 28px;
+border-radius:30px;
+background:linear-gradient(100deg,#9b6cff,#6652dc);
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+.button:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 30px rgba(155,108,255,.25);
+}
+
+.secondary{
+display:block;
+margin-top:22px;
+color:#50d9ff;
+text-decoration:none;
+font-size:13px;
+}
+
+footer{
+margin-top:35px;
+font-size:12px;
+color:#77758d;
+}
+
+@keyframes pop{
+0%{transform:scale(.5);opacity:0}
+100%{transform:scale(1);opacity:1}
+}
+
+@media(max-width:550px){
+.card{padding:40px 22px}
+.logo{margin-bottom:35px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="container">
+
+<a href="index.html" class="logo">
+INFINITE<span> IQ</span>
+</a>
+
+<main class="card">
+
+<div class="check">✓</div>
+
+<div class="tag">ENQUIRY RECEIVED</div>
+
+<h1>Thank You for <span class="gradient">Choosing Us.</span></h1>
+
+<p class="description">
+Your project enquiry has been submitted successfully.
+We're excited to learn more about your idea and explore how we can bring it to life.
+</p>
+
+<div class="next">
+<h2>What happens next?</h2>
+<p>
+01 — Our team reviews your project details.<br>
+02 — We'll contact you using the email address you provided.<br>
+03 — We'll discuss the next steps for your project.
+</p>
+</div>
+
+<a href="index.html" class="button">
+Return to INFINITE IQ ↗
+</a>
+
+<a href="index.html#services" class="secondary">
+Explore Our Services
+</a>
+
+</main>
+
+<footer>
+© <span id="year"></span> INFINITE IQ · Ideas Without Limits.
+</footer>
+
+</div>
+
+<script>
+document.getElementById("year").textContent =
+new Date().getFullYear();
+</script>
+
+</body>
+</html>
